@@ -1,0 +1,8 @@
+@media print 
+{
+   @page
+   {
+    size: 2in 8.5in ;
+    size: portrait
+  }
+}

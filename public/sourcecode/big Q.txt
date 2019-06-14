@@ -1,0 +1,130 @@
+I would like to ask, why I can't able to refresh two html tables? only 1? is there something wrong with the javascript code? I already tried to declare 2 variables and tried to create to script  for each and still no luck and I tried to change the variables name to unique one but still no luck. thanks. my full code below.
+<!-- SALES.HTML -->
+<div class="col-sm-5 shadow">
+		<p>
+		  <h3><center>Hyukies</center></h3>
+		  <center>Catbalogan, City</center>
+		  <center><span class="glyphicon glyphicon-time"></span>&nbsp;<?php include('time.php'); ?></center> <br />
+
+		   <div id="transactions_left">
+				<?php include_once('salestable.php')?>
+			</div>
+		</p>
+
+    <div class="row">
+			  <div class="col-sm-12"><b>
+				  <p>
+				  
+				<?php include_once('sales_count.php')?>
+				
+						<script>
+							var table = $("#salestableid");
+								var refresh = function() {
+								  table.load("salestable.php", function() {
+									setTimeout(refresh, 1); 
+								  });
+								};
+							refresh();
+
+							var table1 = $("#sales_countid");
+								var refresh1 = function() {
+								  table.load("sales_count.php", function() {
+									setTimeout(refresh1, 1); 
+								  });
+								};
+							refresh1();
+						</script>
+
+					<button type="button" class="btn btn-danger btn-md" data-toggle='modal' data-target='#cancel'>Cancel</a>
+					<button type="button" class="btn btn-warning btn-md" data-toggle='modal' data-target='#hold'>Hold</button>
+					<button type="button" class="btn btn-success btn-md pull-right" data-toggle='modal' data-target='#payment' >Payment</button>
+					<br /><br />
+					<center>Thank you and have a Nice day!</center>
+
+				</p>
+			</div>
+    </div>
+</div>
+
+<!-- End of Page SALES.HTML -->
+
+
+
+<!-- SALESTABLE.PHP -->
+
+	<?php require_once("../includes/db_connection.php"); ?>
+		   <table class="table table-hover" id='salestableid'>
+				<thead>
+						<tr class= "default" style="background-color: #e18728">
+							<th><font color = "white">Action</font></th>
+							<th width="200"><font color = "white">Product</th>
+							<th><font color = "white">Quantity</th>
+							<th width="75"><font color = "white">Price</th>
+							<th width ="90"><font color = "white">Total</th>
+						</tr>
+				</thead>
+			<tbody>
+				  <tr>
+														<?php
+															$user_query = mysqli_query($connection, "SELECT saleslog.itemid, saleslog.qty, saleslog.date, saleslog.total, saleslog.id, items.`name`, items.description, items.retailprice FROM saleslog LEFT JOIN items ON items.id = saleslog.itemid")or die(mysqli_error());
+															while($row = mysqli_fetch_array($user_query)){
+															$id = $row['id'];
+														?>
+												
+													<tr>
+														<td><a href="delete_salesitem.php?id=<?php echo urlencode($row['id']); ?>" class="btn btn-danger glyphicon glyphicon-trash btn-xs"></a></td>
+														<td><?php echo $row['name']; ?></td>
+														<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $row['qty']; ?></td>					
+														<td>&nbsp<?php echo number_format($row['retailprice'],2); ?></td>
+														<?php 
+															$total = $row['qty'] * $row['retailprice'];
+														?>
+														<td><?php echo number_format($total,2); ?></td>
+													</tr>
+													<?php } ?>
+				 
+				</tr>
+			</tbody>
+		</table>
+	
+<!-- End of Page SALESTABLE.PHP -->
+	
+
+	
+<!--SALES_COUNT.PHP -->
+<?php require_once("../includes/db_connection.php"); ?>
+
+					   <?php	
+						   $count_client= mysqli_query($connection, "SELECT * FROM saleslog");
+						   $count =  mysqli_num_rows($count_client);
+                       ?>
+					   
+					   	<?php	
+							$totalsales= mysqli_query($connection, "SELECT SUM(total) AS totalpritems FROM saleslog");
+							while($totalperitems = mysqli_fetch_array($totalsales)){
+							$total_sales = $totalperitems['totalpritems'];
+							}
+                       ?>
+					   
+				   
+	<table class='table' style="border-style: dotted" id="sales_countid">
+      <tr class='' style="border-style: dotted">
+        <td width="50" >Total Items: </td>
+		<td width="50"align="right"><?php echo $count; ?></td>
+		<td width="50" >Total: </td>
+        <td width="50"align="right" >P <?php echo number_format($total_sales,2); ?></td>
+      </tr>
+      <tr class='' style="border-style: dotted">
+        <td width="50">Discount: </td>
+        <td width="50"align="right">0.00 </td>
+		<td width="50">Tax: </td>
+		<td width="50"align="right">0.00 </td>
+      </tr>
+      <tr style="border-style: dotted">
+        <td width>Total Payable: </td>
+        <td align="right">P <?php echo  number_format($total_sales,2); ?></td>
+		<td></td>
+		<td></td>
+      </tr>
+	</table>
+<!--End of Page SALES_COUNT.PHP -->	

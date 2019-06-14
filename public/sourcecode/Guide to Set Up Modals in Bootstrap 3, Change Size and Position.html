@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)http://coolestguidesontheplanet.com/bootstrap/modal.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Guide to Set Up Modals in Bootstrap 3, Change Size and Position</title>
+<meta name="description" content="Getting started with Modals in Bootstrap 3, setting up the needed files, set up a modal, change size and position of modals and put one modal inside another">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://plus.google.com/106860928699031426539?rel=author">
+ 
+<link href="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/css" rel="stylesheet" type="text/css">
+ 
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ 
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://coolestguidesontheplanet.com/bootstrap/icomoon/style.css">
+<meta charset="UTF-8">
+<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../css/ie.css" />
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link href="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/default.css" type="text/css" rel="stylesheet">
+<style>.wrapper{position:relative;}#myModal3{top:5%;right:50%;outline:none;}a.btn[href^="#myModal"]{display:inline-block;margin-bottom:30px;}#myModal4 .modal-dialog{width:75%;}@media screen and (min-width: 768px) {#myModal4 .modal-dialog{width:900px;}}.mailchimp{background:#ffaf4b;background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmYWY0YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjkyMGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:-moz-linear-gradient(top,#ffaf4b 0%,#ff920a 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ffaf4b),color-stop(100%,#ff920a));background:-webkit-linear-gradient(top,#ffaf4b 0%,#ff920a 100%);background:-o-linear-gradient(top,#ffaf4b 0%,#ff920a 100%);background:-ms-linear-gradient(top,#ffaf4b 0%,#ff920a 100%);background:linear-gradient(to bottom,#ffaf4b 0%,#ff920a 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffaf4b',endColorstr='#ff920a',GradientType=0);border:none;padding:6px;text-align:center;border-radius:8px;margin:0 auto;padding:2% 4%;max-width:300px;}.mailchimp>h3{display:none;}.mailchimp #mc_embed_signup input[type="email"]{display:block;width:96%;padding:8px;margin:10px auto;outline:none;border:1px solid #999;background:#cccccc;background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkZGRkZGQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:-moz-linear-gradient(top,#ffffff 0%,#dddddd 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ffffff),color-stop(100%,#dddddd));background:-webkit-linear-gradient(top,#ffffff 0%,#dddddd 100%);background:-o-linear-gradient(top,#ffffff 0%,#dddddd 100%);background:-ms-linear-gradient(top,#ffffff 0%,#dddddd 100%);background:linear-gradient(to bottom,#ffffff 0%,#dddddd 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0);-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-family:"Comic Sans","Chalkboard",cursive;font-size:16px;color:#333;}#mc_embed_signup label{color:#215E7B;font-family:'Sonsie One',Arial,san-serif;font-size:25px;padding-top:10px;display:block;}#mc_embed_signup input.button{visibility:visible;-moz-box-shadow:inset 0px 1px 0px 0px #bee2f9;-webkit-box-shadow:inset 0px 1px 0px 0px #bee2f9;box-shadow:inset 0px 1px 0px 0px #bee2f9;background:-webkit-gradient(linear,left top,left bottom,color-stop(0.05,#63b8ee),color-stop(1,#468ccf));background:-moz-linear-gradient(center top,#63b8ee 5%,#468ccf 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#63b8ee',endColorstr='#468ccf');background-color:#63b8ee;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;border:1px solid #3866a3;display:inline-block;color:#14396a;font-family:Arial,sans-serif;font-size:13px;font-weight:bold;padding:6px 24px;text-decoration:none;text-shadow:1px 1px 0px #7cacde;font-family:'Sonsie One',"Comic Sans","Chalkboard",cursive;}#mc_embed_signup input.button:hover{background:-webkit-gradient(linear,left top,left bottom,color-stop(0.05,#468ccf),color-stop(1,#63b8ee));background:-moz-linear-gradient(center top,#468ccf 5%,#63b8ee 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#468ccf',endColorstr='#63b8ee');background-color:#468ccf;}#mc_embed_signup input.buttonactive{position:relative;top:1px;}</style>
+<style type="text/css"></style><script src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/cb=gapi.loaded_1" async=""></script><script src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" defer="" async="" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/piwik.js"></script><script type="text/javascript" async="" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/embed.js"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><script src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/alfie.f51946af45e0b561c60f768335c9eb79.js" async="" charset="UTF-8"></script></head>
+<body data-twttr-rendered="true" class="">
+<script id="twitter-wjs" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/widgets.js"></script><script type="text/javascript" async="" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" async="" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/ga.js"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31543134-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<div class="wrapper container">
+<div class="row">
+<div class="col-md-12">
+<h1>Modals in Bootstrap 3</h1>
+<h2>Modalling in Progress</h2>
+<p style="margin: 50px auto;">Modals are pretty cool in Bootstrap = let's take a look on how to set them up and how they work...</p>
+ 
+<div class="content">
+<ul>
+ 
+<li><a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal1" class="btn btn-default btn-lg">Getting your Bootstrap CSS &amp; Javascript<br> and jQuery files in order</a></li>
+ 
+<li><a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal2" class="btn btn-primary btn-lg">One Simple Modal Set Up</a></li>
+ 
+<li><a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal3" class="btn btn-success btn-lg">Changing the Modal Position</a></li>
+ 
+<li><a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal4" class="btn btn-warning btn-lg">Changing the Modal Size</a></li>
+ 
+<li><a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal5" class="btn btn-info btn-lg">Putting a Modal in a Modal</a></li>
+ 
+<li><a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal7" class="btn btn-danger btn-lg">Putting a Form in a Modal</a></li>
+ 
+<li><a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal10" class="btn btn-default btn-lg">Showing a Modal when a Page Loads</a></li>
+ 
+ 
+</ul>
+<p style="margin: 50px auto;"> How you can set <a href="http://coolestguidesontheplanet.com/use-bootstrap-modals-wordpress-themes/">Bootstrap modals up in a WordPress Theme</a> </p>
+<p> You can also and use a <a href="http://wordpress.org/plugins/bootstrap-modals/" title="Bootstrap Modals for WordPress">plugin for WordPress here which loads all the required Bootstrap javascripts.</a> You just need to do the markup.</p>
+ 
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 class="modal-title">Get your files in order</h3>
+</div>
+<div class="modal-body">
+<ul>
+<li><p>Get Your <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and <a href="http://jquery.com/download/" target="_blank">jQuery</a> files in order, this example uses <a href="http://www.bootstrapcdn.com/" target="_blank">Bootstrap CDN</a> and JQuery hosted files, however you can download and serve your own files</p>
+<p>Add your<strong>CSS</strong> files just before your closing &lt;/head&gt; tag</p>
+<pre>&lt;link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel='stylesheet' type='text/css'&gt;</pre>
+<p>Add your <strong>Javascript</strong> files just before your closing &lt;/body&gt; tag</p>
+<pre>&lt;script src="http://code.jquery.com/jquery-1.11.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"&gt;&lt;/script&gt;</pre>
+</li></ul>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div> 
+</div> 
+</div> 
+ 
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 class="modal-title">Simple Single Modal Set Up</h3>
+</div>
+<div class="modal-body">
+<p>Below is the default Modal Code from Bootstrap with one edit - I have changed the ID in the target Modal to <strong>myModal1</strong>which is used as the <strong>href</strong> attribute in the button and as the <strong>id</strong> attribute in the Modal div</p>
+<pre> &lt;!-- Button trigger modal --&gt;
+  &lt;a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-lg"&gt;Launch demo modal&lt;/a&gt;
+
+  &lt;!-- Modal --&gt;
+  &lt;div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
+    &lt;div class="modal-dialog"&gt;
+      &lt;div class="modal-content"&gt;
+        &lt;div class="modal-header"&gt;
+          &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
+          &lt;h4 class="modal-title"&gt;Modal title&lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+          ...
+        &lt;/div&gt;
+        &lt;div class="modal-footer"&gt;
+          &lt;button type="button" class="btn btn-default" data-dismiss="modal"&gt;Close&lt;/button&gt;
+          &lt;button type="button" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+    &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+  &lt;/div&gt;&lt;!-- /.modal --&gt;</pre>
+<h3>Button Code</h3>
+<p>The first part of the code is the actual button you clicked</p>
+<pre> &lt;!-- Button trigger modal --&gt;
+  &lt;a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-lg"&gt;Launch demo modal&lt;/a&gt;</pre>
+<p>In button code above, the button initiates the modal and the relationship between the button and the modal is defined by the link <mark>href="#mymodal1"</mark> in the button which is the <strong>id</strong> name of the target <strong>div</strong> in the modal, which in this example is <mark>id="myModal1"</mark></p>
+<p>Instead of using <strong>href</strong> in the button link you can also use the <strong>data-target</strong> attribute and give it the same value.</p>
+<p>This is much like an anchor link to another place on the page</p>
+<h3>Modal Code</h3>
+<p>The second part of the code is the modal code itself</p>
+<pre>   &lt;!-- Modal --&gt;
+  &lt;div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
+    &lt;div class="modal-dialog"&gt;
+      &lt;div class="modal-content"&gt;
+        &lt;div class="modal-header"&gt;
+          &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;×&lt;/button&gt;
+          &lt;h4 class="modal-title"&gt;<mark>Modal title</mark>&lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+         <mark>Modal body content</mark>
+        &lt;/div&gt;
+        &lt;div class="modal-footer"&gt;<mark>Modal Footer Content
+          &lt;button type="button" class="btn btn-default" data-dismiss="modal"&gt;Close&lt;/button&gt;
+          &lt;button type="button" class="btn btn-primary"&gt;Save changes&lt;/button&gt;</mark>
+        &lt;/div&gt;
+      &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+    &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+  &lt;/div&gt;&lt;!-- /.modal --&gt;</pre>
+<p>The highlighted areas are where you add your header, body and footer content</p>
+</div>
+<div class="modal-footer">
+ 
+<button type="button" class="btn btn-primary" data-dismiss="modal">Close to get rid of me!</button>
+</div>
+</div> 
+</div> 
+</div> 
+ 
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 class="modal-title">Changing the Modal Position</h3>
+</div>
+<div class="modal-body">
+<h4>To change the Modal position in the viewport you can target the Modal <mark>div id</mark>, in this example this <strong>id</strong> is <strong>myModal3</strong></h4>
+<pre> 
+#myModal3 {
+top:5%;
+right:50%;
+outline: none;
+}</pre>
+<p>The outline will get rid of any focus lines that appear - then you can position the Modal in either absolute pixels terms or relative %.</p>
+<p>A positive % value in the <strong>top</strong> attribute will push the modal down the viewport</p>
+<p>A positive % value on the <string>right</string> attribute will push the modal away from the right edge of the viewport, you can also use <strong>left</strong> and <strong>bottom</strong> values.</p><p>The modal is by default positioned using <strong>fixed</strong> positioning, so it is fixed to the dimensions of the viewport.</p>
+</div>
+<div class="modal-footer">
+ 
+<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+</div>
+</div> 
+</div> 
+</div> 
+ 
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 class="modal-title">Changing the Modal Size</h3>
+</div>
+<div class="modal-body">
+<h4>To change the Modal size, can target the Modal class<mark>.modal-dialog</mark>, in this example this <strong>class</strong> is targetted as a child of the initial modal ID; &gt;#myModal<!--/strong--> as there are multiple modals on the page.</h4>
+          
+<pre> 
+@media screen and (min-width: 768px) {
+	
+	#myModal4 .modal-dialog  {width:900px;}
+
+}</pre>
+<p>A initial media query is used to target viewports wider than 768px</p>
+<p>Viewports less than 768px the modal will fill the width which is then set to auto, you would target Viewports less than 768px without a media query like so:</p>
+
+<pre> 
+
+	#myModal4 .modal-dialog  {width:75%;}
+
+</pre>
+
+<p>So here the modal will occupy 75% of the viewport when the screen is less than 768px</p>
+<p>If you are going to target both sizes - declare the media query <strong>last</strong></p>
+         </div>
+        <div class="modal-footer">
+        <!-- Button trigger modal 3-->
+       
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+  
+  
+  
+    <!-- Modal 5 info light blu info -->
+  <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 class="modal-title">Modal5 - Modal in A Modal</h3>
+        </div>
+        <div class="modal-body">
+          <p>To add a Modal in a Modal you just need to include the &lt;a&gt; code which uses either the <strong>data-target</strong> or <strong>href</strong> attribute to target the destination modal.</p>
+          <p>In this example I have placed 2 lots of the code in the <strong>footer</strong> of this modal, the first one opens a previous modal using the <strong>href</strong> and the second one opens up a modal using the <strong>data-target</strong> attribute later down in the code</p>
+          <pre>          
+         &lt;a data-toggle="modal" href="#myModal3" class="btn btn-success"&gt;Show Me The Modal About Position&lt;/a&gt;
+         
+         &lt;a data-toggle="modal" data-target="#myModal6" class="btn btn-danger"&gt; Show Me The Modal In Front&lt;/a&gt;
+          
+          
+          </pre>
+        </div>
+        <div class="modal-footer">
+                          <!-- Button trigger modal 4-->
+         <a data-toggle="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal3" class="btn btn-success">Show Me The Modal About Position</a>
+         <!-- Button trigger modal 6-->
+         <a data-toggle="modal" class="btn btn-danger" data-target="#myModal6">Show Me The Modal In Front</a>
+
+          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+    <!-- Modal6 green success modal in a modal-->
+  <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 class="modal-title">Modal In Front</h3>
+        </div>
+        <div class="modal-body">
+          <p>I am the 2ndlast Modal for now as I have run out of default Bootstrap button colors.</p>
+        </div>
+        <div class="modal-footer">
+           <a data-toggle="modal" class="btn btn-danger" data-target="#myModal8">Modal in a Modal in a Modal</a>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+         
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+  
+  
+      <!-- Modal7 red danger-->
+  <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 class="modal-title">Form in a Modal</h3>
+        </div>
+        <div class="modal-body">
+        <p>Just keep your form code in between the &lt;div class="modal-body&gt;&lt;/div&gt; tags.</p>
+          <!-- Begin MailChimp Signup Form -->
+<div class="mailchimp">
+
+<div id="mc_embed_signup">
+<form action="http://coolestguyplanettech.us7.list-manage1.com/subscribe/post?u=0ba0990db8437f4048d542abd&id=fcf0036cf1" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+	<label for="mce-EMAIL">Subscribe to the Latest Posts</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Add in your email address..." required="">
+	<input type="submit" value="Keep Me Posted!" name="subscribe" id="mc-embedded-subscribe" class="button">
+</form>
+</div>
+</div>
+
+<!--End mc_embed_signup-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+         
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+    <!-- Modal6 green success-->
+  <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 class="modal-title">Modal In Front</h3>
+        </div>
+        <div class="modal-body">
+          <p>I am the last Modal for now as I have run out of default Bootstrap button colors.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+         
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->  
+  
+  
+  
+  
+      <!-- Modal8 light blue info REMOTE -->
+  <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+    <div class="modal-dialog">
+     <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 class="modal-title">Lionel Richie Modal</h3>
+        </div>
+        <div class="modal-body">
+        <audio controls="" preload="none" style="width:100%;" loop="">
+ <source src="https://s3.amazonaws.com/ayb-neil/Hello-LionelRichie.mp3" type="audio/mpeg">
+ <!--<source src="https://s3.amazonaws.com/cgp_audio/all-night-long.ogg" type="audio/ogg" /> -->
+ <p>Your browser does not support HTML5 audio.</p>
+ </audio>
+          <p>Hello, is it me your looking for?</p>
+        </div>
+        <div class="modal-footer">
+        
+         
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+      <!-- Modal9 light blue info call Javascript -->
+  <div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true" style="display: none;">
+    <div class="modal-dialog">
+     <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 class="modal-title">Welcome to the<br> World of Modals</h3>
+        </div>
+        <div class="modal-body">
+  
+          <h4>Looking at Modals in Bootstrap 3</h4>
+          <ul>
+          	<li>Setting up the Javascript and jQuery files</li>
+          	<li>Simple Modal Set Up</li>
+          	<li>Changing the Modal Position</li>
+          	<li>Changing the Modal Size</li>
+          	<li>Putting a Modal in a Modal</li>
+          	<li>Putting a Form in a Modal</li>
+          	<li>Showing a Modal when a page loads</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+        
+         
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Let's Get Started</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  
+  
+        <!-- Modal10 default grey loading modal via Javascript -->
+  <div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true" style="display: none;">
+    <div class="modal-dialog">
+     <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 class="modal-title">Showing a Modal When a Page Loads</h3>
+        </div>
+        <div class="modal-body">
+  
+          <p>To show a Modal when the page loads, you need to use a Javascript snippet, you don't need the initial button code that is going to be replaced with the javascript but you still need to create the modal content as normal with a unique ID.</p>
+          <p>Then use this javascript which needs to be placed <strong>after</strong> the jQuery and Bootstrap javascript script links. You just need to change the target <strong>ID</strong> to match the Modal that you want to load.</p>
+          
+        <pre>&lt;script type="text/javascript"&gt;
+    $(window).load(function(){
+        $('<mark>#myModal9</mark>').modal('show');
+    });
+&lt;/script&gt;
+
+	        
+	        
+        </pre>
+        </div>
+        <div class="modal-footer">
+        
+         
+         <a data-toggle="modal" data-dismiss="modal" href="http://coolestguidesontheplanet.com/bootstrap/modal.php#myModal4" class="btn btn-danger">Close </a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+  
+
+<div class="socialmedia">
+
+	<div class="fb">
+	<script src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/all.js"></script>
+	<script type="text/javascript">
+	document.write('<fb:like layout="button_count" show_faces="false" width="100"></fb:like>')
+	</script><fb:like layout="button_count" show_faces="false" width="100" class=" fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=0&amp;href=http%3A%2F%2Fcoolestguidesontheplanet.com%2Fbootstrap%2Fmodal.php&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;show_faces=false&amp;width=100"><span style="vertical-align: top; width: 0px; height: 0px; overflow: hidden;"><iframe name="f353e528fc" width="100px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/saved_resource.html" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe></span></fb:like></div>
+	
+	<div class="googplus">
+	<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1426720357227" name="I0_1426720357227" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div><script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script></div>
+	
+	<div class="tweet">
+	<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/tweet_button.3b6d1172463333ba9e3a4714e5a08ce6.en.html" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 108px; height: 20px;"></iframe>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</div>
+
+</div>
+  <div id="disqus_thread"><iframe id="dsq-2" data-disqus-uid="2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/saved_resource(1).html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 1575px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="dsq-indicator-north" data-disqus-uid="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 512px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 512px !important; max-width: 512px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe><iframe id="dsq-indicator-south" data-disqus-uid="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 512px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 512px !important; max-width: 512px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'coolestguyontheplanet'; // required: replace example with your forum shortname
+        var disqus_url = 'http://www.coolestguidesontheplanet.com/bootstrap/modal.php';
+        var disqus_identifier = '/bootstrap/modal.php';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript>
+    
+    
+</div>
+
+</div>
+</div><!-- /row -->
+</div><!-- /wrapper -->
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://coolestguidesontheplanet.com/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "16"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+<script>$('#myModal2').modal(options)</script>
+<script src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/jquery-1.11.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/bootstrap.min.js"></script>
+<script src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/respond.min.js"></script><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/6Dg4oLkBbYq.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/6Dg4oLkBbYq(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+
+
+<script>
+$(function() { // wait for the DOM
+    setTimeout(function () {
+        var $modal = $('#myModal9'); // your selector; cache it; only query the DOM once!
+    
+        $modal.modal('show'); // show modal; this happens after 3 seconds 
+    
+        setTimeout(function () {
+            $modal.modal('hide'); // hode modal; this happens after 8 seconds due to the nested timeouts
+        }, 5000);    
+    }, 3000);
+});
+</script>
+
+
+
+
+
+
+
+<iframe name="oauth2relay457896401" id="oauth2relay457896401" src="./Guide to Set Up Modals in Bootstrap 3, Change Size and Position_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

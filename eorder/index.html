@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mobile Order</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/thumbnail-gallery.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+		<script src="js/numeral.js"></script>
+		<script>
+$(function(){
+
+
+
+
+var db = openDatabase('mydb', '1.0', 'my first database', 2 * 1024 * 1024);
+db.transaction(function (tx) {
+  tx.executeSql('CREATE TABLE IF NOT EXISTS foo (id unique, text)');
+  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "synergies")');
+});
+
+
+   
+$('#customprice_qty').blur(function(){
+    	price=localStorage.getItem('customprice');
+		qty=localStorage.getItem('customqty');
+		id=localStorage.getItem('customid');
+	//alert(price+" "+qty);
+
+	if (ltype=='Price'){
+		priceorig=parseFloat($(this).val());
+		price=$(this).val();
+		
+		if (price<0){
+			
+			price = parseFloat(price);
+			
+		}else{
+			
+					price = parseFloat(price)*parseFloat(qty);
+		}
+			
+
+		//alert(price);
+	}else{
+
+		priceorig=0.00;
+		qty=$(this).val();
+		qty = parseFloat(qty);
+		//price = parseFloat(price) * parseFloat(qty)
+		
+		
+		if (price<0){
+			
+			price = parseFloat(price);
+			
+		}else{
+			
+					price = parseFloat(price)*parseFloat(qty);
+		}
+		//alert(price);
+
+	}
+	
+		//alert(priceorig);
+
+	 $.post('mobilecontroller.php',{lType:'AddPrice',	price:price,qty:qty,id:id,priceorig:priceorig,										   
+														},	
+														
+														function(data){	
+														//alert(data);
+
+															 
+															  
+															if ($.trim(data)!='false' ){ 
+                                                                  
+															}else{
+
+															 
+															}
+														});  
+	
+	
+    localStorage.setItem('customid','');     
+	location.reload();
+});
+
+		$('body').on('click','.b',function(){
+			//alter('hello');
+			
+		});
+	
+	
+
+	
+	
+	$('.btnlistopen').click(function(){
+		if (localStorage.getItem('table')!=''){
+		    $('#listbills').html('Pending');
+			alert('Open List Bill is pending, kindly hold it before viewing another List Open Bill.');
+		}
+		
+	});
+		$('.btnclose').click(function(){
+		   location.reload();
+		   tbl = $('#holdref').val();
+		   localStorage.setItem('table',tbl);
+	   });
+
+	
+	$('.btnenable').click(function(){
+		$("#holdref").attr("readonly", false);
+		$('#holdref').focus();
+	});
+	
+		  	$('.btnhold').click(function(){
+   
+			  x= localStorage.getItem('table');
+			  
+			  if (x==''){
+				  
+				  $("#holdref").attr("readonly", false);
+			  }else{
+				  
+				 $("#holdref").attr("readonly", true);
+			  }
+			  
+			  
+			 //  alert(x);
+			  $('#holdref').val($.trim(x));
+			  
+				localStorage.setItem('table','');	
+				
+				
+				});
+				
+				
+				$('.btncancel').click(function(){
+					//alert('elow');
+					localStorage.setItem('table','');	
+				});
+				
+	
+$('#holdref').keyup(function(){
+  
+var table=$(this).val();
+//alert(id);
+$.post('mobilecontroller.php',{lType:'CheckTable',table:table, 													   
+														},	
+														
+														function(data){	
+															 //alert(data);
+
+															 
+															  
+															if ($.trim(data)!='false' ){ 
+                                                               
+                                                               alert('Table is already taken.');
+															    $("#btnsub").attr("disabled", true);
+															   $(this).val('');
+															}else{
+
+															 $("#btnsub").attr("disabled", false);
+															}
+														});  
+	
+});	
+
+
+
+$('html').on('click','.btncategory',function(){
+
+	cat = $(this).attr('xmlvalue');
+	//alert(cat);
+	
+	$('#caret').text(cat);
+	$.post('mobilecontroller.php',{lType:'Fill',cat:cat, 													   
+														},	
+														
+                                                         function(data){	
+															//alert(data);
+                                                            //  $('#txtsearch').val(data);
+										
+															  
+															if ($.trim(data)!='false' ){ 
+                                                            //  content = '<div class="row">';
+															content='<table border="1" style="font-size:20px;" class="table table-condensed"><tbody>';
+															listres='';
+                                                    			var obj = $.parseJSON(data);
+																
+																n=Object.keys(obj).length;
+															
+														
+																
+																   $.each(obj, function() {	 
+																 //  content+='<tr><td>'++'</td><td></td></tr>';//' <div class="col-lg-3 col-md-4 col-xs-6 thumb"><span style="color:blue;"><b>'+this['name']+'</b></span>';
+																  // content+='<a class="thumbnail btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#">';
+																   
+                                                                   listres+='&nbsp;&nbsp;<a class="btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><li class="list-group-item ">'+this['name']+'&nbsp;<h4><span class="badge" style="font-size:20px">'+parseFloat(this['retailprice']).toFixed(2)+'</span></h4></li></a>';
+																   if ($.trim(this['img'])!='images/'){
+																 //  alert('with image');
+																   /*
+																	   if (parseInt(n)==1){
+																	   content+='<img width="200px" height="200px" class="img-responsive" src="'+this['img']+'" alt="">'+'<b>Price: '+parseFloat(this['retailprice']).toFixed(2)+'</b>';
+																	   }else{
+																	   content+='<img width="200px" height="200px" class="img-responsive" src="'+this['img']+'" alt="">'+'<b>Price: '+parseFloat(this['retailprice']).toFixed(2)+'</b>';
+																	   }
+																	   */
+																	      
+    
+                                                                       
+																	   
+																	//   content+='<tr><td>'+'<a class="thumbnail btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><img width="200px" height="200px" class="img-responsive" src="'+this['img']+'" alt=""></a>';
+																	 //  content+='</td><td>'+this['name']+'</td><td>'+parseFloat(this['retailprice']).toFixed(2)+'</td></tr>';
+																   }else{
+																  //  alert('no image');
+																	//content+='<img width="200px" height="200px" class="img-responsive" src="images/noimage.jpg" alt="">'+'<b>Price: '+parseFloat(this['retailprice']).toFixed(2)+'</b>';
+																   // content+='<tr><td>'+'<a class="thumbnail btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><img width="200px" height="200px" class="img-responsive" src="images/noimage.jpg" alt=""></a>';
+																	 //  content+='</td><td>'+this['name']+'</td><td>'+parseFloat(this['retailprice']).toFixed(2)+'</td></tr>';
+																   }
+																   //content+=' </a>';
+																   //content+='</div>';
+																   
+																
+																	//lang += '<tr><td class="item_no">'+this['item_no']+'</td><td class="menu_code">'+this['menu_code']+'</td> <td class="desc">'+this['description']+'</td> <td class="tdqty"> <input type="number" class="clsqty" value="'+this['quantity']+'"/></td> <td class="ucost">'+this['unit_cost']+'</td> <td class="price">'+parseFloat(this['quantity'])*parseFloat(this['unit_cost'])+'</td><td><button type="button" class="excludebtn">Exclude</button></td></tr>';                                 		
+																	//lang += '<tr><td class="item_no">'+this['item_no']+'</td><td class="menu_code">'+this['menu_code']+'</td> <td class="desc">'+this['description']+'</td> <td class="tdqty"> <input type="number" class="clsqty" value="'+this['quantity']+'"/></td> <td class="ucost">'+this['unit_cost']+'</td> <td class="price">'+parseFloat(this['quantity'])*parseFloat(this['unit_cost'])+'</td><td></td></tr>';                                 		
+																   //content += '<div class="col-sm-4"><a class="fixed-size-square btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><span>'+this['name']+'<img  width="300px" height="150px" src="'+this['img']+'" alt="Generic placeholder image"></span></a></div>';
+																   });	
+															  
+																
+																
+																
+																
+																
+																//content += '</div>';
+																//content+='</tbody></table>';
+																// $('#divmobile').html(content);																 $('#divmobile').html(content);
+											                     $('#listres').html(listres);	
+																 
+															}else{
+															  // window.open('sales.php','_self');
+															   //alert('Search Item not found.');
+														      // $('#divmobile').html('<h1>No record found</h1>');
+															   $('#listres').html(('<h1>No record found</h1>'));	
+																
+															   return;
+															}
+														});
+														
+});
+
+
+
+
+
+ $.post('mobilecontroller.php',{lType:'all',												   
+														},	
+														
+                                                         function(data){	
+															//alert(data);
+                                                            //  $('#txtsearch').val(data);
+										
+															  
+															if ($.trim(data)!='false' ){ 
+                                                            //  content = '<div class="row">';
+															content='<table border="1" style="font-size:20px;" class="table table-condensed"><tbody>';
+															listres='';
+                                                    			var obj = $.parseJSON(data);
+																
+																n=Object.keys(obj).length;
+															
+														
+																
+																   $.each(obj, function() {	 
+																 //  content+='<tr><td>'++'</td><td></td></tr>';//' <div class="col-lg-3 col-md-4 col-xs-6 thumb"><span style="color:blue;"><b>'+this['name']+'</b></span>';
+																  // content+='<a class="thumbnail btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#">';
+																   
+                                                                     listres+='&nbsp;&nbsp;<a class="btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><li class="list-group-item ">'+this['name']+'&nbsp;<h4><span class="badge" style="font-size:20px">'+parseFloat(this['retailprice']).toFixed(2)+'</span></h4></li></a>';
+																   if ($.trim(this['img'])!='images/'){
+																 //  alert('with image');
+																   /*
+																	   if (parseInt(n)==1){
+																	   content+='<img width="200px" height="200px" class="img-responsive" src="'+this['img']+'" alt="">'+'<b>Price: '+parseFloat(this['retailprice']).toFixed(2)+'</b>';
+																	   }else{
+																	   content+='<img width="200px" height="200px" class="img-responsive" src="'+this['img']+'" alt="">'+'<b>Price: '+parseFloat(this['retailprice']).toFixed(2)+'</b>';
+																	   }
+																	   */
+																	      
+    
+                                                                       
+																	   
+																	 //  content+='<tr><td>'+'<a class="thumbnail btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><img width="200px" height="200px" class="img-responsive" src="'+this['img']+'" alt=""></a>';
+																	  // content+='</td><td>'+this['name']+'</td><td>'+parseFloat(this['retailprice']).toFixed(2)+'</td></tr>';
+																   }else{
+																  //  alert('no image');
+																	//content+='<img width="200px" height="200px" class="img-responsive" src="images/noimage.jpg" alt="">'+'<b>Price: '+parseFloat(this['retailprice']).toFixed(2)+'</b>';
+																    //content+='<tr><td>'+'<a class="thumbnail btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><img width="200px" height="200px" class="img-responsive" src="images/noimage.jpg" alt=""></a>';
+																	//   content+='</td><td>'+this['name']+'</td><td>'+parseFloat(this['retailprice']).toFixed(2)+'</td></tr>';
+																   }
+																   //content+=' </a>';
+																   //content+='</div>';
+																   
+																
+																	//lang += '<tr><td class="item_no">'+this['item_no']+'</td><td class="menu_code">'+this['menu_code']+'</td> <td class="desc">'+this['description']+'</td> <td class="tdqty"> <input type="number" class="clsqty" value="'+this['quantity']+'"/></td> <td class="ucost">'+this['unit_cost']+'</td> <td class="price">'+parseFloat(this['quantity'])*parseFloat(this['unit_cost'])+'</td><td><button type="button" class="excludebtn">Exclude</button></td></tr>';                                 		
+																	//lang += '<tr><td class="item_no">'+this['item_no']+'</td><td class="menu_code">'+this['menu_code']+'</td> <td class="desc">'+this['description']+'</td> <td class="tdqty"> <input type="number" class="clsqty" value="'+this['quantity']+'"/></td> <td class="ucost">'+this['unit_cost']+'</td> <td class="price">'+parseFloat(this['quantity'])*parseFloat(this['unit_cost'])+'</td><td></td></tr>';                                 		
+																   //content += '<div class="col-sm-4"><a class="fixed-size-square btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><span>'+this['name']+'<img  width="300px" height="150px" src="'+this['img']+'" alt="Generic placeholder image"></span></a></div>';
+																   });	
+															  
+																
+																
+																
+																
+																
+																//content += '</div>';
+																//content+='</tbody></table>';
+																// $('#divmobile').html(content);																 $('#divmobile').html(content);
+											                     $('#listres').html(listres);	
+																 
+															}else{
+															  // window.open('sales.php','_self');
+															   //alert('Search Item not found.');
+														      // $('#divmobile').html('<h1>No record found</h1>');
+															   $('#listres').html(('<h1>No record found</h1>'));	
+																
+															   return;
+															}
+														});
+														
+
+
+$('html').on('click','.btnitem',function(){
+var id=$(this).attr('data-record-type');
+var rprice=$(this).attr('xmlvalue');
+$('#listres').focus();
+	lExist='false';
+
+                                   $('#tblsales tr').each(function() {
+										var itemid = $(this).find(".itemid").html();
+										var itemdesc = $(this).find(".itemdesc").html();
+										var qty = $(this).find(".tdqty").html();
+										//alert(menu_code+' '+code);
+										
+										if ($.trim(id) == $.trim(itemid) ){
+										  // alert($.trim(itemdesc)+' is exist.');
+										    n=parseInt($('#'+itemid).val())+1;
+											$('#message').html('Last Item: '+itemdesc+'  | Quantity: '+n);
+											//alert(n);
+											$('#'+itemid).val(n);
+											// $('#'+itemid).focus();
+											lExist='true';
+											//alert('#tdqty'+itemid);
+											$('"#tdqty'+itemid+'"').html('2');
+											//$('#'+itemid).val('2');
+											
+                                          
+										}
+										 
+										});
+			
+
+//alert(rprice);
+
+if (lExist=='false'){
+$.post('mobilecontroller.php',{lType:'MobileSalesItems',id:id,												   
+														},	
+														
+														function(data){	
+															//alert(data);
+															if ($.trim(data)!='false' ){ 
+															
+															    
+                                                                   var obj = $.parseJSON(data);
+																   var lang = '';
+																   item ='';
+																   $.each(obj, function() {	 
+																   
+																	//lang += '<tr><td class="item_no">'+this['item_no']+'</td><td class="menu_code">'+this['menu_code']+'</td> <td class="desc">'+this['description']+'</td> <td class="tdqty"> <input type="number" class="clsqty" value="'+this['quantity']+'"/></td> <td class="ucost">'+this['unit_cost']+'</td> <td class="price">'+parseFloat(this['quantity'])*parseFloat(this['unit_cost'])+'</td><td><button type="button" class="excludebtn">Exclude</button></td></tr>';                                 		
+																
+																	lang += '<tr><td width="5%" class="itemid">'+this['id']+'</td><td   id="tdqty"'+this['id']+'><input type="number" xmlvalue="'+this['retailprice']+'" id="'+this['id']+'" class="form-control txtqty" style="width: 70px;" value="1"/></td><td class="itemdesc">'+this['name']+'</td><td class="price" id="price'+this[id]+'">'+parseFloat(this['retailprice']).toFixed(2)+'</td><td class="total">'+parseFloat(this['retailprice']).toFixed(2)+'</td><td><a href="#" class="btn btn-danger glyphicon glyphicon-trash btn-xs btndel" title="Double click to delete this item."></a></td></tr>';                                 		
+																    
+																	item +=" Last Item:"+this['name'];
+																	
+																    
+																   }); 
+																   $('#message').html(item+'     | Quantity: 1');
+																   $('#tblsales').append(lang);
+																      $('.itemid').hide();
+                                                                      $('.price').hide();
+																    TotalBill(); 
+																 // $('.txtqty').hide();
+																 
+																 
+																
+															}else{
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});
+}
+														
+
+});
+
+
+
+
+$('html').on('keyup','.txtqty',function(){
+
+ total = parseFloat($(this).val()) *  parseFloat($(this).attr('xmlvalue'));
+// id = $()
+ //alert(total);
+		//$('#tblsales tr').each(function() { 
+		//$(this).closest(".total").html(parseFloat(total).toFixed(2));
+		 $(this).closest("tr").find('.total').html(parseFloat(total).toFixed(2));
+		
+		//});
+		TotalBill();
+});
+
+
+$('body').on('click','.btndel',function(){
+
+  $(this).closest('tr').remove();     
+  TotalBill();
+  
+});
+
+
+function TotalBill(){
+
+		
+	   
+	                  var sum = 0;
+                          $('.total').each(function() {
+							var value = $(this).text();
+						//	alert(value);
+							// add only if the value is number
+							if(!isNaN(value) && value.length != 0) {
+								sum += parseFloat(value);
+							}
+						});
+						$('#totalamount').html(parseFloat(sum).toFixed(2));
+						
+						$('#netamount').html(parseFloat(sum).toFixed(2));
+						
+	   
+}
+
+  $('#txtsearch').keyup(function(){
+   
+	search =$(this).val();
+	
+	
+	
+	                             $.post('mobilecontroller.php',{lType:'SearchItems',search:search, 													   
+														},	
+														
+                                                         function(data){	
+															//alert(data);
+                                                            //  $('#txtsearch').val(data);
+										
+															  
+															if ($.trim(data)!='false' ){ 
+                                                            //  content = '<div class="row">';
+															content='<table border="1" style="font-size:20px;" class="table table-condensed"><tbody>';
+															listres='';
+                                                    			var obj = $.parseJSON(data);
+																
+																n=Object.keys(obj).length;
+															
+														
+																
+																   $.each(obj, function() {	 
+																 //  content+='<tr><td>'++'</td><td></td></tr>';//' <div class="col-lg-3 col-md-4 col-xs-6 thumb"><span style="color:blue;"><b>'+this['name']+'</b></span>';
+																  // content+='<a class="thumbnail btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#">';
+																   
+                                                                     listres+='&nbsp;&nbsp;<a class="btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><li class="list-group-item ">'+this['name']+'&nbsp;<h4><span class="badge" style="font-size:20px">'+parseFloat(this['retailprice']).toFixed(2)+'</span></h4></li></a>';
+																  
+																   //content+=' </a>';
+																   //content+='</div>';
+																   
+																
+																	//lang += '<tr><td class="item_no">'+this['item_no']+'</td><td class="menu_code">'+this['menu_code']+'</td> <td class="desc">'+this['description']+'</td> <td class="tdqty"> <input type="number" class="clsqty" value="'+this['quantity']+'"/></td> <td class="ucost">'+this['unit_cost']+'</td> <td class="price">'+parseFloat(this['quantity'])*parseFloat(this['unit_cost'])+'</td><td><button type="button" class="excludebtn">Exclude</button></td></tr>';                                 		
+																	//lang += '<tr><td class="item_no">'+this['item_no']+'</td><td class="menu_code">'+this['menu_code']+'</td> <td class="desc">'+this['description']+'</td> <td class="tdqty"> <input type="number" class="clsqty" value="'+this['quantity']+'"/></td> <td class="ucost">'+this['unit_cost']+'</td> <td class="price">'+parseFloat(this['quantity'])*parseFloat(this['unit_cost'])+'</td><td></td></tr>';                                 		
+																   //content += '<div class="col-sm-4"><a class="fixed-size-square btnitem" data-record-type="'+this['id']+'"xmlvalue="'+this['retailprice']+'" href="#"><span>'+this['name']+'<img  width="300px" height="150px" src="'+this['img']+'" alt="Generic placeholder image"></span></a></div>';
+																   });	
+															  
+																
+																
+																
+																
+																
+																//content += '</div>';
+																//content+='</tbody></table>';
+																// $('#divmobile').html(content);																 $('#divmobile').html(content);
+											                     $('#listres').html(listres);	
+																 
+															}else{
+															  // window.open('sales.php','_self');
+															   //alert('Search Item not found.');
+														      // $('#divmobile').html('<h1>No record found</h1>');
+															   $('#listres').html(('<h1>No record found</h1>'));	
+																
+															   return;
+															}
+														});
+														
+										
+	
+  });
+  
+  
+  
+  
+ $.post('mobilecontroller.php',{lType:'allcat',												   
+														},	
+														
+														function(data){	
+															//alert(data);
+															if ($.trim(data)!='false' ){ 
+															
+															    var obj = $.parseJSON(data);
+																   var x = '';
+																   $.each(obj, function() {	 
+																   
+																	
+																	x += '<li style="padding:10px; font-size:20px;" ><a  class="btn btn-info btn-lg btncategory" href="#"   xmlvalue="'+this['category']+'">'+this['category']+'</a></li>';
+																   // x += '<option class="btncategory"  xmlvalue="'+this['category']+'">'+this['category']+'</option>';
+																  // x+='<button type="button" class="btn btn-primary btn-lg btncategory" xmlvalue="'+this['category']+'">'+this['category']+'</button>';
+																   });
+
+															   
+                                                                  $('#mycat').html(x);
+																
+															}else{
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});
+														
+														
+						
+														
+  
+  
+  
+  $('.btnpushorder').click(function(){
+  //alert('elow');
+       var ref = $('#txtref').val();
+	   var disc = $('#disc').text();
+	   var waiter = $('#txtwaiter').val();
+	   
+	   var status='false';
+	   
+						var r=$('#itemsale tr').length;
+						if (r==1){
+							$("#messagebox").modal({backdrop: false});
+							return;
+						}
+	   
+           if (ref=='' ){
+		       //alert('Empty Table No. or Order Reference');
+			   //$("#messagebox").html('Empty Table No. or Order Reference');
+			   $("#emptyRefMsg").modal({backdrop: false});
+			   
+			   $('#txtref').focus();
+			   return;
+		   }   
+
+
+if (waiter=='' ){
+		       //alert('Empty Table No. or Order Reference');
+			   //$("#messagebox").html('Empty Table No. or Order Reference');
+			   $("#emptyWaiterMsg").modal({backdrop: false});
+			   
+			   $('#txtref').focus();
+			   return;
+		   }           		   
+						
+var r = confirm("Push Order?");
+   if (r == true) {
+     
+
+						
+						   $('#tblsales tr').each(function () {
+                             var itemid = $(this).find('.itemid').text();
+							 var qty = $(this).find('input').val();
+							 var price = $(this).find('.price').text();
+							 var total = $(this).find('.total').text();
+							// alert(itemid+" "+qty+" "+price+" "+total);
+							 $.post('mobilecontroller.php',{lType:'OrderList',itemid:itemid,qty:qty,price:price,total:total,ref:ref,disc:disc,waiter:waiter,											   
+														},	
+														
+														function(data){	
+	                                                       //  alert(data);
+															// $('#txtref').val(data);
+															 
+															 status = data;
+															 
+															 
+															 
+															if ($.trim(data)!='false' ){ 
+															
+															   $('#message').html('Order Pushed').css('color','white').fadeOut(6000);
+																
+															}else{
+															 $('#message').html('Order Failed').css('color','white').fadeOut('slow');
+															}
+														});
+														
+														$('#tblsales').html('');
+														$('input').val('');
+														$('#totalamount').text('0.00');
+														$('#disc').text('0.00');
+														$('#netamount').text('0.00');
+							     
+							
+							
+							 });
+	}else{
+	
+	   // alert('Order not pushed..');
+	   $('#txtref').val('');
+	   $('#txtref').focus();
+	}
+
+  }); //Button PushOrder
+  
+  
+  $('#txtref').keyup(function(){
+   
+   
+var r=$('#itemsale tr').length;
+
+if (r==1){
+
+$("#messagebox").modal({backdrop: false});
+return;
+}
+
+	ref =$(this).val();
+	     
+	if (ref!=''){
+	
+	                             $.post('mobilecontroller.php',{lType:'CheckRefExist',ref:ref, 													   
+														},	
+														
+                                                        function(data){	
+															//alert(data);
+                                                            //  $('#txtsearch').val(data);
+										
+															  
+															if ($.trim(data)!='false' ){ 
+                                                              
+															  
+																
+																//var r = confirm("Table Reference is exist, Do you want to add this Oder?");
+															    
+																
+																$("#myModal").modal({backdrop: false});
+																
+																/*
+																if (r == true) {
+																   
+																	//alert('t');
+																}else{
+																
+																$('#txtref').val('');
+																//$('#txtref').focus();
+																}
+																*/
+
+											
+																 
+															}else{
+
+															}
+														});
+														
+	}
+														
+										
+	
+  });
+   
+  $('#caret').text('All');
+  
+  
+  
+   $('#btnno').click(function(){
+	   $('#txtref').val('');
+	   $('#txtref').focus();
+   });
+  
+		  $('#btnyes').click(function(){
+		  
+			  $('.btnpushorder').click();
+		   
+		   });
+		   
+		   
+   $('#btnmsgok').click(function(){
+       
+	   $('#txtref').val('');
+	  // $('#txtref').focus();
+   });
+   
+   $('#btnemptyrefmsgok').click(function(){
+       
+	   //$('#txtref').val('');
+	   $('#txtref').focus();
+   });
+   
+      $('#btnemptywaitermsgok').click(function(){
+       
+	   //$('#txtref').val('');
+	   $('#txtwaiter').focus();
+   });
+   
+   
+   $('#h1').hide();
+   $('#h2').hide();
+   $('#tray').hide();
+ $('.btntray').click(function(){
+ $('#tray').toggle();
+// $('#txtsearch').focus();
+ 
+
+ });
+   
+   //$('#myside').hide('slow');
+ // $('#message').html('');
+ 
+ $('html').on('click','.txtqty',function(){
+    $(this).val('');
+	
+/*	
+c=$(this).attr('id');
+alert(c);
+n=parseInt($('#'+c).val())+1;
+$('#'+c).val(n);
+*/
+ 
+ });
+ 
+  $('html').on('blur','.txtqty',function(){
+   if ( $(this).val() == ''){
+     
+	  $("#emptyqty").modal({backdrop: false});
+	   $(this).focus();
+   }
+ 
+ });
+ 
+ var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+  clearTimeout (timer);
+  timer = setTimeout(callback, ms);
+ };
+})();
+ 
+ $('#txtsearch').click(function() {
+ // delay(function(){
+  //  alert('Hi, func called');
+   //$('html').click();
+//  }, 1500 );
+$('.btnclosekey').show();
+$(this).val('');
+});
+
+ $('.btnclosekey').click(function() {
+ // delay(function(){
+  //  alert('Hi, func called');
+   //$('html').click();
+//  }, 1500 );
+$('.btnclosekey').hide();
+})
+
+$('.btnclosekey').hide();
+
+ 
+});
+
+</script>
+<style>
+
+
+body{   
+    margin:0;    padding: 0;
+    background:"";
+	font-size:15px;
+	}
+.scrollit {
+    overflow:scroll;
+    height:auto;
+		width:auto;
+}
+
+.scrollitimg {
+    overflow:scroll;
+    height:800px;
+	width:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+    <!-- Page Content -->
+    <div class="">
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+										  
+
+										  
+
+<div class="col-sm-4" id="tray">
+
+ <div class="table-responsive">
+<ul class="list-group">
+<li class="list-group">
+<input style="font-size:20px;" type="text" class="form-control input-lg" id="txtref" name="txtref" placeholder="Table No. or Order Reference"/>
+</li>
+
+<li class="list-group">
+<input style="font-size:20px;" type="text" class="form-control input-lg" id="txtwaiter" name="txtwaiter" placeholder="Waiter Name"/>
+</li>
+
+<li class="list-group">
+ <button type="button" class="btn btn-primary btn-lg btnpushorder" >Push Order</button>
+</li>
+</ul>
+ 
+<table class="table">
+<tr>
+<td>
+<!--
+<input style="font-size:20px;" type="text" class="form-control input-lg" id="txtref" name="txtref" placeholder="Table No. or Order Reference"/>
+-->
+</td>
+<td>
+<!--
+<input style="font-size:20px;" type="text" class="form-control input-lg" id="txtwaiter" name="txtwaiter" placeholder="Waiter Name"/>
+-->
+</td>
+</td>
+<td>
+<!--
+ <button type="button" class="btn btn-primary btn-lg btnpushorder" >Push Order</button>
+-->
+ </td>
+<tr>
+</table>
+</div>
+
+<table class="table table-striped">
+       <tr>
+	   <td>
+	   </td>
+	    <td>
+	   </td>
+	    <td>
+	   </td>
+	   
+<td>
+
+                        <a href="#"><b>SUB TOTAL: </b><div id="totalamount">0.00</div></a>
+
+
+</td>
+<td>
+                        <a href="#"><b>DISCOUNT:</b><div id="disc">0.00</div></a>
+
+</td>
+<td>
+
+                        <a href="#"><b>NET AMOUNT</b><div id="netamount">0.00</div></a>
+        
+</td>
+</tr>
+</table>
+
+<table border="0" id="myside" class="table table-striped">
+<!--
+    <thead>
+
+				  <th>
+				   Code
+				  </th>
+				  <th width="40%">
+				   Quantity
+				  </th>
+				  <th>
+				   Description
+				  </th>
+				  <th>
+				   Item Price
+				  </th>
+				  
+				  <th>
+				   Total
+				  </th>
+				  
+				  <th>
+				   Action
+				  </th>
+
+    </thead>
+	-->
+
+
+  
+    <tbody>
+        <tr>
+            <td colspan="6">
+			<div class="scrollit ">
+            <table border="0" id="itemsale" class="table table-condensed">
+			
+			      <thead>
+
+				  <th id="h1">
+				   Code
+				  </th>
+				  <th width="20%">
+				   Quantity
+				  </th>
+				  <th>
+				   Description
+				  </th>
+				  <th id="h2">
+				   Item Price
+				  </th>
+				  
+				  <th>
+				   Total
+				  </th>
+				  
+				  <th>
+				   Action
+				  </th>
+
+    </thead>
+			  <tbody   id='tblsales'>
+			  </tbody>
+            </table>
+    </div>
+                </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+</div>
+
+<div class="col-sm-8" style="background-color:">
+ 
+
+
+<!--
+<div class="row responsive">
+<div class="col-sm-4">
+	<div class="btn-group" >
+	<a class="btn btn-primary btn-lg" id="caret" href="#" title=""></a>
+	<a class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown" href="#" title=""><span class="caret"></span></a>
+	<ul   id="mycat"class="dropdown-menu">
+													   
+	</ul>
+	</div>
+</div>
+-->
+
+
+
+</div>
+                                                
+
+      <ul class="nav navbar-nav">
+	  
+	  
+        <li class=""><a href="#" class="btn btn-default btn-lg btntray">Tray <span class="badge"></span></a></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        <li> <a href="itemmon.html" class="btn btn-default btn-lg">Order Monitoring</a></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	    <li class="dropdown">
+          <a class="dropdown-toggle btn-lg" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
+          <ul class="dropdown-menu" id="mycat">
+      
+          </ul>
+        </li>
+      </ul>
+
+
+<table class="table table-condensed">
+<tr>
+<td>
+<input style="font-size:20px;" type="text" class="form-control input-lg" id="txtsearch" name="txtsearch" placeholder="Search Item"/>
+</td>
+<td>
+<button class="btn btn-success btn-lg btnclosekey">Close Keyboard</button>
+</td>
+</tr>
+</table>
+
+<span class="text-danger text-lg"  style="font-size:20px;margin-left:10px;" id="message"></span>
+
+
+<div class="scrollitimg">
+<ul class="list-group" id="listres" style="font-size:20px;">
+
+  </ul>
+
+	<!--
+	<table border="0" style="font-size:15px;"  class="table table-striped">
+	<thead>
+	<th>
+	Image
+	</th>
+	
+	<th>
+	Description
+	</th>
+	
+	<th>
+	Price
+	</th>
+	</thead>
+	<tbody id="divmobile">
+	</tbody>
+	</table>
+	
+	-->
+</div>	
+</div>	
+
+
+    </div>
+    <!-- /.container -->
+
+
+	
+	 <div class="modal fade" id="messagebox" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       <!--
+	   <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal with Dark Overlay</h4>
+		  </div>
+		-->  
+        <div class="modal-body">
+         <p>
+		 <h2 id="alertmessage">
+		 Order please before you Push Order.
+		 </h2>
+		 </p>
+		 
+        <p>
+		
+		</p>
+		</div>
+       
+	   
+	    <div class="modal-footer">
+         <button type="button" id='btnmsgok' class="btn btn-primary" data-dismiss="modal">Ok</button>
+
+        </div>
+      <!--
+	   <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      -->		
+      </div>
+      
+    </div>
+  </div>
+
+
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       <!--
+	   <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal with Dark Overlay</h4>
+		  </div>
+		-->  
+        <div class="modal-body">
+         <p>
+		 <h2>
+		 Table Reference is exist, Do you want to add Oder?
+		 </h2>
+		 </p>
+		 
+        <p>
+		
+		</p>
+		</div>
+       
+	   
+	    <div class="modal-footer">
+         <button type="button" id='btnyes' class="btn btn-primary" data-dismiss="modal">Yes</button>
+		<button type="button" id="btnno" class="btn btn-primary" data-dismiss="modal"> No</button>
+        </div>
+      <!--
+	   <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      -->		
+      </div>
+      
+    </div>
+  </div>
+
+  
+  <div class="modal fade" id="PushOrderModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       <!--
+	   <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal with Dark Overlay</h4>
+		  </div>
+		-->  
+        <div class="modal-body">
+         <p>
+		 <h2>
+		 Do you want to Push Oder?
+		 </h2>
+		 </p>
+		 
+        <p>
+		
+		</p>
+		</div>
+       
+	   
+	    <div class="modal-footer">
+         <button type="button" id='btnpushyes' class="btn btn-primary" data-dismiss="modal">Yes</button>
+		<button type="button" id="btnpushno" class="btn btn-primary" data-dismiss="modal"> No</button>
+        </div>
+      <!--
+	   <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      -->		
+      </div>
+      
+    </div>
+  </div> 
+  
+
+
+
+ <div class="modal fade" id="emptyRefMsg" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       <!--
+	   <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal with Dark Overlay</h4>
+		  </div>
+		-->  
+        <div class="modal-body">
+         <p>
+		 <h2 id="alertmessage">
+		 Empty Table or Reference No..
+		 </h2>
+		 </p>
+		 
+        <p>
+		
+		</p>
+		</div>
+       
+	   
+	    <div class="modal-footer">
+         <button type="button" id='btnemptyrefmsgok' class="btn btn-primary" data-dismiss="modal">Ok</button>
+
+        </div>
+      <!--
+	   <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      -->		
+      </div>
+      
+    </div>
+  </div>  
+  
+  
+  
+  
+  <!-- Waiter Empty Message Box  -->
+  
+ <div class="modal fade" id="emptyqty" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       <!--
+	   <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal with Dark Overlay</h4>
+		  </div>
+		-->  
+        <div class="modal-body">
+         <p>
+		 <h2 id="alertmessage">
+		 Empty quantity.
+		 </h2>
+		 </p>
+		 
+        <p>
+		
+		</p>
+		</div>
+       
+	   
+	    <div class="modal-footer">
+         <button type="button" id='btnemptyqty' class="btn btn-primary" data-dismiss="modal">Close</button>
+
+        </div>
+      <!--
+	   <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      -->		
+      </div>
+      
+    </div>
+  </div>  
+  
+</body>
+
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://bootstrapbay.com/blog/customize-bootstrap/ -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en-US" prefix="og: http://ogp.me/ns#"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/share"></script><script async="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/count.json"></script><script async="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/share(1)"></script><script async="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/count(1).json"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://bootstrapbay.com/blog/xmlrpc.php">
+
+<!-- favicon -->
+
+<link rel="shortcut icon" href="http://bootstrapbay.com/blog/wp-content/themes/sparkling/inc/ico/favicon.ico">
+
+<!--[if IE]><![endif]-->
+
+<style type="text/css"></style>
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.25 - http://yoast.com/wordpress/seo/ -->
+<meta name="description" content="In this tutorial, we explain how to customize the default Bootstrap styling the right way, by adding a separate custom stylesheet.">
+<link rel="canonical" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay.html">
+<link rel="author" href="http://bootstrapbay.com/blog/customize-bootstrap/ChristopherGimmer">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay">
+<meta property="og:description" content="In this tutorial, we explain how to customize the default Bootstrap styling the right way, by adding a separate custom stylesheet.">
+<meta property="og:url" content="http://bootstrapbay.com/blog/customize-bootstrap/">
+<meta property="og:site_name" content="BootstrapBay">
+<meta property="article:tag" content="bootstrap">
+<meta property="article:tag" content="customize">
+<meta property="article:tag" content="tutorial">
+<meta property="article:section" content="Tutorials">
+<meta property="article:published_time" content="2014-06-17T08:20:51+00:00">
+<meta property="article:modified_time" content="2014-11-11T13:15:00+00:00">
+<meta property="og:image" content="http://bootstrapbay.com/blog/wp-content/uploads/2014/06/customizing-bootstrap.png">
+<meta property="og:image" content="http://bootstrapbay.com/blog/wp-content/uploads/2014/06/custom-css2.png">
+<meta property="og:image" content="http://bootstrapbay.com/blog/wp-content/uploads/2014/06/square-buttons1.png">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="BootstrapBay » Feed" href="http://bootstrapbay.com/blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="BootstrapBay » Comments Feed" href="http://bootstrapbay.com/blog/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="BootstrapBay » How to Customize the Default Bootstrap Style, the Right Way Comments Feed" href="http://bootstrapbay.com/blog/customize-bootstrap/feed/">
+<link rel="stylesheet" id="stylish_popular_posts_style-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-github-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/github.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-consolas-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/consolas.css" type="text/css" media="all">
+<link rel="stylesheet" id="easy-social-share-buttons-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/easy-social-share-buttons.css" type="text/css" media="all">
+<link rel="stylesheet" id="ace_responsive-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/ace-video-container.css" type="text/css" media="all">
+<link rel="stylesheet" id="advanced-responsive-video-embedder-plugin-styles-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="mailchimp-for-wp-checkbox-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/checkbox.css" type="text/css" media="all">
+<link rel="stylesheet" id="mailchimp-for-wp-form-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/form.css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-bootstrap-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-icons-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-fonts-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-style-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-custom-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/custom.css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-contest-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/contest.css" type="text/css" media="all">
+<link rel="stylesheet" id="wordpress-popular-posts-css" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/wpp.css" type="text/css" media="all">
+<script async="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/fbds.js"></script><script async="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/analytics.js"></script><script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/jquery.js"></script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.6.1","is_admin":"0","ajaxurl":"http:\/\/bootstrapbay.com\/blog\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/crayon.min.js"></script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/modernizr.min.js"></script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/bootstrap.min.js"></script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/functions.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://bootstrapbay.com/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://bootstrapbay.com/blog/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.9.3">
+<link rel="shortlink" href="http://bootstrapbay.com/blog/?p=462">
+<!-- ESSB v. 1.3.9.8.1 CSS Builder --><style type="text/css">.essb_links_list li.essb_totalcount_item .essb_t_l_big .essb_t_nb:after, .essb_links_list li.essb_totalcount_item .essb_t_r_big .essb_t_nb:after { color: #999999;content: "SHARES";display: block;font-size: 11px;font-weight: normal;text-align: center;text-transform: uppercase;margin-top: -5px; } .essb_links.essb_template_flat-retina .essb_t_l_big {
+  text-align: center;
+}
+.essb_links.essb_template_flat-retina {
+ margin-top: 0;
+margin-bottom: 30px;
+}.essb_fixed { margin: 0; }.essb_more_popup {
+	/*background-color: #ffffff;*/
+	z-index: 999;
+	/*-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	-ms-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);*/
+}.essb_more_popup_content {
+	padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px;
+	margin: 0;
+	text-align: center;
+}.essb_more_popup_shadow {
+	position:fixed;
+	_position:absolute; /* hack for IE 6*/
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	background: rgba(99, 99, 99, 0.3);
+	z-index:998;
+	display: none;
+}.essb_more_popup_button_close { position: absolute; top:5px; right: 0;}.essb_more_popup_button_close a, .essb_more_popup_button_close a:hover { background: none; background-color: none; border: none; font-weight: bold; text-decoration: none; color: #333; padding-right: 5px; margin-top: 5px;}</style><!-- /CSS Builder --><link rel="author" href="https://plus.google.com/+ChristopherGimmer">
+<link rel="publisher" href="https://plus.google.com/u/0/b/108611020776381780052/+BootstrapbayThemes/">
+<script src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/saved_resource" data-sumo-site-id="6c134cbae62475a9ca0dcfaf5a3ed4e6e2d45bfddc1727149023cb055e189bef" async=""></script><style type="text/css">.arve-thumb-wrapper { width: 300px; }.arve-normal-wrapper.alignleft, .arve-normal-wrapper.alignright, .arve-normal-wrapper.aligncenter { width: 400px; }</style>
+            <!-- Wordpress Popular Posts v3.0.3 -->
+            <script type="text/javascript">//<![CDATA[
+				jQuery(document).ready(function(){
+					jQuery.get('http://bootstrapbay.com/blog/wp-admin/admin-ajax.php', {
+						action: 'update_views_ajax',
+						token: '78d3956b95',
+						id: 462					}, function(response){
+						if ( console && console.log )
+							console.log(response);
+					});
+				});
+			//]]></script>
+            <!-- End Wordpress Popular Posts v3.0.3 -->
+            
+<script type="text/javascript" async="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/embed.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="408190b5-e369-48af-8e31-afb7380ecd66/service" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/service.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="13359558-e447-43f3-a3cd-aa61c0b91c02/service" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/service(1).js"></script><link type="text/css" rel="stylesheet" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/sumome-scrollbox-popup.css"><link type="text/css" rel="stylesheet" href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/sumome-smartbar-popup.css"></head>
+
+<body class="single single-post postid-462 single-format-standard group-blog" style="padding-top: 51px !important;"><div id="sumome-smartbar-popup" class="sumome-smartbar-popup sumome-smartbar-shadow" style="z-index: 9999999; position: fixed; background-color: rgb(240, 240, 240) !important;"><a class="sumome-smartbar-link" href="http://sumome.com/?src=sm-ba-6c134cbae62475a9ca0dcfaf5a3ed4e6e2d45bfddc1727149023cb055e189bef" target="_blank" style="top: 2.5px;"><img class="sumome-icon" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/transparent-crown-light.png"></a><a href="javascript:void(0);" class="sumome-smartbar-close" style="color: rgb(34, 34, 34) !important; top: 4.5px;"></a><div class="sumome-smartbar-content"><style>@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,800);</style><div class="sumome-smartbar-theme sumome-smartbar-modal-bg" style="background: rgb(240, 240, 240) !important;"></div>
+<div class="sumome-smartbar-form" style="padding: 7px 0;">
+  <div class="sumome-smartbar-text" style="font-family: &#39;Open Sans&#39;, sans-serif !important; color: rgb(34, 34, 34) !important;">Download our free landing page template</div>
+  <div class="sumome-smartbar-error" style="color: rgb(34, 34, 34) !important; display: none;"></div>
+  <div class="sumome-smartbar-input">
+    <input type="text" value="" autofocus="" name="smartbar_email_address" id="smartbar_email_address" placeholder="Enter your email..." style="width: 144px;">
+    <button class="sumome-smartbar-button sumome-smartbar-button-bg sumome-smartbar-button-text" type="submit" style="color: rgb(255, 255, 255) !important; border-bottom-color: rgb(0, 57, 161) !important; background-color: rgb(15, 82, 186) !important;">Send me The Template!</button>
+  </div>
+  <button class="sumome-smartbar-continue sumome-smartbar-continue-bg sumome-smartbar-continue-text" type="submit" style="display: none; color: rgb(255, 255, 255) !important; border-bottom-color: rgb(0, 57, 161) !important; background-color: rgb(15, 82, 186) !important;">Continue</button>
+</div>
+</div></div>
+<div id="page" class="hfeed site">
+
+	<header id="masthead" class="site-header" role="banner">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="site-navigation-inner col-sm-12">
+		        <div class="navbar-header">
+		            <button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+
+				
+					<div id="logo">
+						<a href="http://bootstrapbay.com/"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/logo.png" alt="BootstrapBay"></a>
+					</div><!-- end of #logo -->
+
+				
+				
+		        </div>
+					<div class="collapse navbar-collapse navbar-ex1-collapse"><ul id="menu-primary-navigation" class="nav navbar-nav"><li id="menu-item-418" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-418"><a title="Themes" href="http://bootstrapbay.com/themes">Themes</a></li>
+<li id="menu-item-1518" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1518 dropdown"><a title="Categories" href="http://bootstrapbay.com/blog/customize-bootstrap/#" data-toggle="dropdown" class="dropdown-toggle">Categories <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1519" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1519"><a title="All Categories" href="http://bootstrapbay.com/themes">All Categories</a></li>
+	<li role="presentation" class="divider"></li>
+	<li id="menu-item-1521" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1521"><a title="Business &amp; Corporate" href="http://bootstrapbay.com/themes/business-corporate">Business &amp; Corporate</a></li>
+	<li id="menu-item-1522" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1522"><a title="Admin &amp; Dashboard" href="http://bootstrapbay.com/themes/admin-dashboard">Admin &amp; Dashboard</a></li>
+	<li id="menu-item-1523" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1523"><a title="Portfolio" href="http://bootstrapbay.com/themes/portfolio">Portfolio</a></li>
+	<li id="menu-item-1524" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1524"><a title="Blog &amp; Magazine" href="http://bootstrapbay.com/themes/blog-magazine">Blog &amp; Magazine</a></li>
+	<li id="menu-item-1525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1525"><a title="E-Commerce" href="http://bootstrapbay.com/themes/ecommerce">E-Commerce</a></li>
+	<li id="menu-item-1526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1526"><a title="Landing Page" href="http://bootstrapbay.com/themes/landing-page">Landing Page</a></li>
+	<li id="menu-item-1527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1527"><a title="Resume &amp; CV" href="http://bootstrapbay.com/themes/resume-cv">Resume &amp; CV</a></li>
+	<li id="menu-item-1965" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1965"><a title="Specialty Pages" href="http://bootstrapbay.com/themes/specialty-pages">Specialty Pages</a></li>
+	<li id="menu-item-1528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1528"><a title="Miscellaneous" href="http://bootstrapbay.com/themes/misc">Miscellaneous</a></li>
+	<li role="presentation" class="divider"></li>
+	<li id="menu-item-1880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1880"><a title="WordPress" href="http://bootstrapbay.com/themes/wordpress">WordPress</a></li>
+</ul>
+</li>
+<li id="menu-item-1247" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1247"><a title="Resources" href="http://bootstrapbay.com/blog/bootstrap-resources/">Resources</a></li>
+<li id="menu-item-421" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-421"><a title="Sell" href="http://bootstrapbay.com/sell">Sell</a></li>
+<li id="menu-item-420" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-420"><a title="Blog" href="http://bootstrapbay.com/blog">Blog</a></li>
+</ul></div>					</div>
+		    </div>
+		  </div>
+		</nav><!-- .site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+			<div class="top-section">
+											</div>
+
+		<div class="container main-content-area">
+			<div class="row">
+				<div id="content" class="main-content-inner col-sm-12 col-md-8 pull-left">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-462" class="post-462 post type-post status-publish format-standard has-post-thumbnail hentry category-tutorials tag-bootstrap tag-customize tag-tutorial">
+	<img width="750" height="300" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/customizing-bootstrap.png" class="single-featured wp-post-image" alt="Customizing Bootstrap">	<div class="post-inner-content">
+		<header class="entry-header page-header">
+
+			<h1 class="entry-title ">How to Customize the Default Bootstrap Style, the Right Way</h1>
+
+			<div class="entry-meta">
+				<span class="posted-on"><i class="fa fa-calendar"></i> <a href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay.html" rel="bookmark"><time class="entry-date published" datetime="2014-06-17T08:20:51+00:00">June 17, 2014</time><time class="updated" datetime="2014-11-11T13:15:00+00:00">November 11, 2014</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="http://bootstrapbay.com/blog/author/gimmer/">Christopher Gimmer</a></span></span>
+								<span class="cat-links"><i class="fa fa-folder-open-o"></i>
+					 <a href="http://bootstrapbay.com/blog/category/tutorials/" title="View all posts in Tutorials" rel="category tag">Tutorials</a>				</span>
+								
+			</div><!-- .entry-meta -->
+		</header><!-- .entry-header -->
+
+		<div class="entry-content">
+			
+<div class="essb_links  essb_counters essb_displayed_both essb_template_flat-retina essb_1320593427" id="essb_displayed_both">
+	<ul class="essb_links_list"><li class="essb_item essb_totalcount_item" data-counter-pos="inside"><span class="essb_totalcount essb_t_l_big" title="" title_after=""><span class="essb_total_text"></span><span class="essb_t_nb">9</span></span></li><li class="essb_item essb_link_facebook nolightbox"><a href="http://www.facebook.com/sharer/sharer.php?u=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on Facebook" target="_blank" onclick="essb_window1320593427(&#39;http://www.facebook.com/sharer/sharer.php?u=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;facebook&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"></span></a></li><li class="essb_item essb_link_twitter nolightbox"><a href="http://bootstrapbay.com/blog/customize-bootstrap/#" rel="nofollow" title="Share this article on Twitter" target="_blank" onclick="essb_window1320593427(&#39;https://twitter.com/intent/tweet?text=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&amp;url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;twitter&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"></span></a></li><li class="essb_item essb_link_google nolightbox"><a href="https://plus.google.com/share?url=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on Google+" target="_blank" onclick="essb_window1320593427(&#39;https://plus.google.com/share?url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;google&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"><span class="essb_counter_inside" cnt="5">5</span></span></a></li><li class="essb_item essb_link_linkedin nolightbox"><a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&trk=EasySocialShareButtons&title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&url=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on LinkedIn" target="_blank" onclick="essb_window1320593427(&#39;http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=EasySocialShareButtons&amp;title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&amp;url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;linkedin&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"></span></a></li><li class="essb_item essb_link_stumbleupon nolightbox"><a href="http://www.stumbleupon.com/badge/?url=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on StumbleUpon" target="_blank" onclick="essb_window1320593427(&#39;http://www.stumbleupon.com/badge/?url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;stumbleupon&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"><span class="essb_counter_inside" cnt="1">1</span></span></a></li><li class="essb_item essb_link_reddit nolightbox"><a href="http://reddit.com/submit?url=http://bootstrapbay.com/blog/customize-bootstrap/&title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way" rel="nofollow" title="Share this article on Reddit" target="_blank" onclick="essb_window1320593427(&#39;http://reddit.com/submit?url=http://bootstrapbay.com/blog/customize-bootstrap/&amp;title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&#39;, &#39;reddit&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"><span class="essb_counter_inside" cnt="3">3</span></span></a></li></ul>
+	<input type="hidden" class="essb_info_plugin_url" value="http://bootstrapbay.com/blog/wp-content/plugins/easy-social-share-buttons"><input type="hidden" class="essb_info_permalink" value="http://bootstrapbay.com/blog/customize-bootstrap/" post-id="462"><input type="hidden" class="essb_info_permalink_twitter" value="http://bootstrapbay.com/blog/customize-bootstrap/"><input type="hidden" class="essb_fb_total_count" value="true"><input type="hidden" class="essb_counter_ajax" value="false"><input type="hidden" class="essb_info_counter_pos" value="inside"></div>
+
+<script type="text/javascript">function essb_window1320593427(oUrl, oService) {  essb_window(oUrl, oService, 462);  }; function essb_pinterenst1320593427() { essb_pinterenst(); }</script><p>If you take a look at the source code of some of your favourite websites, we wouldn’t be surprised if you found common elements of the Bootstrap framework being put to use. As Bootstrap is arguably the most popular front-end framework for web development, many designers and developers employ the framework for rapid responsive development.</p>
+<p>But why do some of these sites look nothing like the default Bootstrap theme? Quite simply, additional CSS stylesheets were added or the default Bootstrap stylesheets were modified (let’s disregard LESS or SASS for the sake of this tutorial).</p>
+<p>In this short tutorial, we’ll show you how to do this in a manner that is clean, easy to maintain, and allows you to update to future versions of Bootstrap without breaking your custom styles (providing that the update is minor).<span id="more-462"></span></p>
+<p>Let’s begin.</p>
+<h2>Add a Custom Stylesheet</h2>
+<p>Create a new file in your Bootstrap CSS folder and call it <strong>custom.css</strong>.</p>
+<p><img class="border alignnone wp-image-960 size-full" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/custom-css2.png" alt="custom css file" width="404" height="86"></p>
+<p>Now in the &lt;head&gt; portion of your website, load your new custom CSS file <em><strong>after</strong> </em>the default bootstrap stylesheet. It should look like this.</p><!-- Crayon Syntax Highlighter v2.6.1 -->
+
+		<div id="crayon-550a0ecadfd21999171634" class="crayon-syntax crayon-theme-github crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; float: none; clear: both; font-size: 14px !important; line-height: 20px !important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 14px !important; line-height: 20px !important; opacity: 0; z-index: 0;">&lt;head&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/custom.css"&gt;
+&lt;/head&gt;</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-550a0ecadfd21999171634-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-550a0ecadfd21999171634-2">2</div><div class="crayon-num" data-line="crayon-550a0ecadfd21999171634-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-550a0ecadfd21999171634-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 20px !important;"><div class="crayon-line" id="crayon-550a0ecadfd21999171634-1"><span class="crayon-o">&lt;</span><span class="crayon-v">head</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-550a0ecadfd21999171634-2"><span class="crayon-o">&lt;</span><span class="crayon-e">link </span><span class="crayon-v">rel</span><span class="crayon-o">=</span><span class="crayon-s">"stylesheet"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"text/css"</span><span class="crayon-h"> </span><span class="crayon-v">href</span><span class="crayon-o">=</span><span class="crayon-s">"css/bootstrap.min.css"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-550a0ecadfd21999171634-3"><span class="crayon-o">&lt;</span><span class="crayon-e">link </span><span class="crayon-v">rel</span><span class="crayon-o">=</span><span class="crayon-s">"stylesheet"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"text/css"</span><span class="crayon-h"> </span><span class="crayon-v">href</span><span class="crayon-o">=</span><span class="crayon-s">"css/custom.css"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-550a0ecadfd21999171634-4"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">head</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p></p>
+<h2>Applying Custom Styles</h2>
+<p>To modify or apply additional styling to your web page, simply add the proper code to your custom.css file. There is no need to edit any of the original Bootstrap styles directly.</p>
+<p>For example, if you decided that you did not like the rounded corners on the buttons, you could apply the following style in your custom.css file.</p><!-- Crayon Syntax Highlighter v2.6.1 -->
+
+		<div id="crayon-550a0ecadfd2a541996355" class="crayon-syntax crayon-theme-github crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; float: none; clear: both; font-size: 14px !important; line-height: 20px !important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 14px !important; line-height: 20px !important; z-index: 0; opacity: 0;">.btn {
+	border-radius: 0px;
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-550a0ecadfd2a541996355-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-550a0ecadfd2a541996355-2">2</div><div class="crayon-num" data-line="crayon-550a0ecadfd2a541996355-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 20px !important;"><div class="crayon-line" id="crayon-550a0ecadfd2a541996355-1"><span class="crayon-k ">.btn </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-550a0ecadfd2a541996355-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-550a0ecadfd2a541996355-3"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p>Now if you add a button to your web page with the default Bootstrap styles (<code>.btn</code> class), the corners aren’t rounded. This is due to the fact that your custom stylesheet overrides the default Bootstrap stylesheet.</p>
+<p><img class="alignnone wp-image-965 size-full" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/square-buttons1.png" alt="bootstrap square buttons" width="481" height="184"></p>
+<p>The upside to adding your own custom stylesheet after the default bootstrap stylesheet is that in the event that<a title="Bootstrap blog" href="http://blog.getbootstrap.com/" target="_blank"> Bootstrap gets upgraded</a>, you can simply replace the Bootstrap stylesheet with the new one and your custom styles will remain untouched. Note that for major upgrades, you may need to modify your custom styles. Nevertheless, even major upgrades will still be much easier using this approach.</p>
+<p>Another reason to proceed in this way is that it’s much easier to keep track of your changes and revert back to default styles if necessary. If you make changes directly to the default stylesheet, it becomes very difficult to maintain and keep track of changes.</p>
+<p>This method is the only way to go if you’re creating Bootstrap <a title="Themes &amp; templates" href="http://bootstrapbay.com/" target="_blank">themes &amp; templates</a>.</p>
+<h2>Conclusion</h2>
+<p>As you can see, adding a separate stylesheet is a very effective way of customizing the default Bootstrap styling. Doing so will make it much easier to update Bootstrap and keeps the code very clean.</p>
+<p><strong>BONUS:</strong> Check out our post on <a title="Bootstrap UI Kits" href="http://bootstrapbay.com/blog/bootstrap-ui-kit/">Bootstrap UI Kits</a>, a great way to customize the default Bootstrap look and feel.</p>
+
+<div class="essb_links  essb_counters essb_displayed_both essb_template_flat-retina essb_128076689" id="essb_displayed_both">
+	<ul class="essb_links_list"><li class="essb_item essb_totalcount_item" data-counter-pos="inside"><span class="essb_totalcount essb_t_l_big" title="" title_after=""><span class="essb_total_text"></span><span class="essb_t_nb">9</span></span></li><li class="essb_item essb_link_facebook nolightbox"><a href="http://www.facebook.com/sharer/sharer.php?u=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on Facebook" target="_blank" onclick="essb_window128076689(&#39;http://www.facebook.com/sharer/sharer.php?u=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;facebook&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"></span></a></li><li class="essb_item essb_link_twitter nolightbox"><a href="http://bootstrapbay.com/blog/customize-bootstrap/#" rel="nofollow" title="Share this article on Twitter" target="_blank" onclick="essb_window128076689(&#39;https://twitter.com/intent/tweet?text=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&amp;url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;twitter&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"></span></a></li><li class="essb_item essb_link_google nolightbox"><a href="https://plus.google.com/share?url=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on Google+" target="_blank" onclick="essb_window128076689(&#39;https://plus.google.com/share?url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;google&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"><span class="essb_counter_inside" cnt="5">5</span></span></a></li><li class="essb_item essb_link_linkedin nolightbox"><a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&trk=EasySocialShareButtons&title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&url=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on LinkedIn" target="_blank" onclick="essb_window128076689(&#39;http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=EasySocialShareButtons&amp;title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&amp;url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;linkedin&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"></span></a></li><li class="essb_item essb_link_stumbleupon nolightbox"><a href="http://www.stumbleupon.com/badge/?url=http://bootstrapbay.com/blog/customize-bootstrap/" rel="nofollow" title="Share this article on StumbleUpon" target="_blank" onclick="essb_window128076689(&#39;http://www.stumbleupon.com/badge/?url=http://bootstrapbay.com/blog/customize-bootstrap/&#39;, &#39;stumbleupon&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"><span class="essb_counter_inside" cnt="1">1</span></span></a></li><li class="essb_item essb_link_reddit nolightbox"><a href="http://reddit.com/submit?url=http://bootstrapbay.com/blog/customize-bootstrap/&title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way" rel="nofollow" title="Share this article on Reddit" target="_blank" onclick="essb_window128076689(&#39;http://reddit.com/submit?url=http://bootstrapbay.com/blog/customize-bootstrap/&amp;title=How+to+Customize+the+Default+Bootstrap+Style%2C+the+Right+Way&#39;, &#39;reddit&#39;); return false;"><span class="essb_icon"></span><span class="essb_network_name"><span class="essb_counter_inside" cnt="3">3</span></span></a></li></ul>
+	<input type="hidden" class="essb_info_plugin_url" value="http://bootstrapbay.com/blog/wp-content/plugins/easy-social-share-buttons"><input type="hidden" class="essb_info_permalink" value="http://bootstrapbay.com/blog/customize-bootstrap/" post-id="462"><input type="hidden" class="essb_info_permalink_twitter" value="http://bootstrapbay.com/blog/customize-bootstrap/"><input type="hidden" class="essb_fb_total_count" value="true"><input type="hidden" class="essb_counter_ajax" value="false"><input type="hidden" class="essb_info_counter_pos" value="inside"></div>
+
+<script type="text/javascript">function essb_window128076689(oUrl, oService) {  essb_window(oUrl, oService, 462);  }; function essb_pinterenst128076689() { essb_pinterenst(); }</script>					</div><!-- .entry-content -->
+
+		<footer class="entry-meta">
+
+	    		      <!-- tags -->
+	      <div class="tagcloud" style="display: block;">
+
+	          <a href="http://bootstrapbay.com/blog/tag/bootstrap/">bootstrap</a> <a href="http://bootstrapbay.com/blog/tag/customize/">customize</a> <a href="http://bootstrapbay.com/blog/tag/tutorial/">tutorial</a> 
+	      </div>
+	      <!-- end tags -->
+	      
+		</footer><!-- .entry-meta -->
+	</div>
+				<div class="post-inner-content secondary-content-box">
+	        <!-- author bio -->
+	        <div class="author-bio content-box-inner">
+
+	          <!-- avatar -->
+	          <div class="avatar">
+	              <img alt="" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/e955cedfbc654caf13ae602f8ff40029" class="avatar avatar-60 photo" height="60" width="60">	          </div>
+	          <!-- end avatar -->
+
+	          <!-- user bio -->
+	          <div class="author-bio-content">
+
+	            <h4 class="author-name"><a href="http://bootstrapbay.com/blog/author/gimmer/">Christopher Gimmer</a></h4>
+	            <p class="author-description">
+	                Christopher is an entrepreneur &amp; the co-founder of BootstrapBay. He helps web designers, developers and entrepreneurs utilize the power of Bootstrap. Connect with him on <a href="http://twitter.com/cgimmer">Twitter</a>.	            </p>
+
+	          </div>
+	          <!-- end author bio -->
+
+	        </div>
+	        <!-- end author bio -->
+			</div>
+</article><!-- #post-## -->
+
+			
+<div id="disqus_thread"><iframe id="dsq-2" data-disqus-uid="2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 3863px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="dsq-indicator-north" data-disqus-uid="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 750px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 750px !important; max-width: 750px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe><iframe id="dsq-indicator-south" data-disqus-uid="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 750px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 750px !important; max-width: 750px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe></div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var disqus_url = 'http://bootstrapbay.com/blog/customize-bootstrap/';
+    var disqus_identifier = '462 http://bootstrapbay.com/blog/?p=462';
+    var disqus_container_id = 'disqus_thread';
+    var disqus_domain = 'disqus.com';
+    var disqus_shortname = 'bootstrapbay';
+    var disqus_title = "How to Customize the Default Bootstrap Style, the Right Way";
+        var disqus_config = function () {
+        var config = this; // Access to the config object
+        config.language = '';
+
+        /*
+           All currently supported events:
+            * preData — fires just before we request for initial data
+            * preInit - fires after we get initial data but before we load any dependencies
+            * onInit  - fires when all dependencies are resolved but before dtpl template is rendered
+            * afterRender - fires when template is rendered but before we show it
+            * onReady - everything is done
+         */
+
+        config.callbacks.preData.push(function() {
+            // clear out the container (its filled for SEO/legacy purposes)
+            document.getElementById(disqus_container_id).innerHTML = '';
+        });
+                    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var DsqLocal = {
+        'trackbacks': [
+        ],
+        'trackback_url': "http:\/\/bootstrapbay.com\/blog\/customize-bootstrap\/trackback\/"    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.' + 'disqus.com' + '/embed.js?pname=wordpress&pver=2.74';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+/* ]]> */
+</script>
+
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="http://bootstrapbay.com/blog/color-scheme-generators/" rel="prev"><i class="fa fa-chevron-left"></i> 7 Color Scheme Generators to Help Pick the Perfect Palette</a></div><div class="nav-next"><a href="http://bootstrapbay.com/blog/less-bootstrap-theming/" rel="next">Take the Pain out of Bootstrap Theming with LESS <i class="fa fa-chevron-right"></i></a></div>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+</div>
+	<div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+		<div class="well">
+						<aside id="search-2" class="widget widget_search"><form method="get" class="form-search" action="http://bootstrapbay.com/blog/">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="input-group">
+        <input type="text" class="form-control search-query" value="" name="s" id="s" placeholder="Search...">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary btn-sm btn-default" name="submit" id="searchsubmit" value="Go" style=""><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+      </div>
+    </div>
+  </div>
+</form></aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><div class="carbon_ad">
+<script async="" type="text/javascript" src="http://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootstrapbayblog" id="_carbonads_js"></script>
+</div></div>
+		</aside><aside id="sparkling-social-2" class="widget sparkling-social"><h3 class="widget-title">Follow us</h3>
+    <!-- social icons -->
+    <div class="social-icons sticky-sidebar-social">
+
+
+    <div class="social-icons"><a href="https://facebook.com/bootstrapbay" title="Follow us on Facebok" class="facebook" target="_blank"><i class="social_icon fa fa-facebook"></i></a><a href="https://twitter.com/bootstrapbay" title="Follow us on Twitter" class="twitter" target="_blank"><i class="social_icon fa fa-twitter"></i></a><a href="https://plus.google.com/+BootstrapbayThemes/posts" title="Follow us on Google+" class="googleplus" target="_blank"><i class="social_icon fa fa-googleplus"></i></a><a href="http://www.youtube.com/user/bootstrapbayofficial" title="Follow us on Youtube" class="youtube" target="_blank"><i class="social_icon fa fa-youtube"></i></a><a href="http://bootstrapbay.com/blog/feed/" title="Follow us on RSS" class="rss" target="_blank"><i class="social_icon fa fa-rss"></i></a></div>
+
+    </div><!-- end social icons -->
+
+
+		</aside><aside id="popular-themes-2" class="widget popular-themes"><h3 class="widget-title">Popular Themes</h3>
+    <!-- social icons -->
+    <div class="popular-themes sticky-sidebar-popular-themes">
+
+
+    <ul><li class="theme_item"><a class="theme_img" href="http://bootstrapbay.com/theme/wrapkit-responsive-admin-template-B14B7AB" title="Wrapkit - Responsive Admin Template"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/B14B7AB.png" alt="Wrapkit - Responsive Admin Template"></a><a class="theme_title" href="http://bootstrapbay.com/theme/wrapkit-responsive-admin-template-B14B7AB" title="Wrapkit - Responsive Admin Template">Wrapkit - Responsive Admin Template</a></li><li class="theme_item"><a class="theme_img" href="http://bootstrapbay.com/theme/boom-admin-dashboard-web-app-template-B86EFAA" title="Boom Admin - Dashboard Web App Template"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/B86EFAA.png" alt="Boom Admin - Dashboard Web App Template"></a><a class="theme_title" href="http://bootstrapbay.com/theme/boom-admin-dashboard-web-app-template-B86EFAA" title="Boom Admin - Dashboard Web App Template">Boom Admin - Dashboard Web App Template</a></li><li class="theme_item"><a class="theme_img" href="http://bootstrapbay.com/theme/classic-a-classified-ads-template-B3CB404" title="Classic - A Classified Ads Template"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/B3CB404.jpg" alt="Classic - A Classified Ads Template"></a><a class="theme_title" href="http://bootstrapbay.com/theme/classic-a-classified-ads-template-B3CB404" title="Classic - A Classified Ads Template">Classic - A Classified Ads Template</a></li><li class="theme_item"><a class="theme_img" href="http://bootstrapbay.com/theme/loop-agency-and-personal-theme-B1279DD" title="Loop - Agency and Personal Theme"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/B1279DD.png" alt="Loop - Agency and Personal Theme"></a><a class="theme_title" href="http://bootstrapbay.com/theme/loop-agency-and-personal-theme-B1279DD" title="Loop - Agency and Personal Theme">Loop - Agency and Personal Theme</a></li><li class="theme_item"><a class="theme_img" href="http://bootstrapbay.com/theme/sprflat-responsive-admin-template-B34CE2F" title="SprFlat - Responsive Admin Template"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/B34CE2F.jpg" alt="SprFlat - Responsive Admin Template"></a><a class="theme_title" href="http://bootstrapbay.com/theme/sprflat-responsive-admin-template-B34CE2F" title="SprFlat - Responsive Admin Template">SprFlat - Responsive Admin Template</a></li></ul>	<div class="more_themes">
+		<a href="http://bootstrapbay.com/popular?utm_source=blog" class="btn btn-primary btn-sm">View more popular themes »</a>
+	</div>
+    </div><!-- end social icons -->
+
+
+		</aside>
+<!-- Wordpress Popular Posts Plugin v3.0.3 [W] [all] [views] [regular] -->
+<aside id="wpp-2" class="widget popular-posts">
+<h3 class="widget-title">Popular Posts</h3>
+<ul class="wpp-list">
+<li><a href="http://bootstrapbay.com/blog/free-stock-photos/" title="15 Amazing Sites With Breathtaking Free Stock Photos" target="_self"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/SLR-camera1-60x60.jpg" title="15 Amazing Sites With Breathtaking Free Stock Photos" alt="15 Amazing Sites With Breathtaking Free Stock Photos" width="60" height="60" class="wpp-thumbnail wpp_cached_thumb wpp_featured"></a><a href="http://bootstrapbay.com/blog/free-stock-photos/" title="15 Amazing Sites With Breathtaking Free Stock Photos" class="wpp-post-title" target="_self">15 Amazing Sites With Breathtaking Free Stock Photos</a>  <span class="post-stats"></span> </li>
+<li><a href="http://bootstrapbay.com/blog/bootstrap-3-carousel-tutorial/" title="Bootstrap 3 Carousel Tutorial" target="_self"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/bootstrap-carousel1-60x60.png" title="Bootstrap 3 Carousel Tutorial" alt="Bootstrap 3 Carousel Tutorial" width="60" height="60" class="wpp-thumbnail wpp_cached_thumb wpp_featured"></a><a href="http://bootstrapbay.com/blog/bootstrap-3-carousel-tutorial/" title="Bootstrap 3 Carousel Tutorial" class="wpp-post-title" target="_self">Bootstrap 3 Carousel Tutorial</a>  <span class="post-stats"></span> </li>
+<li><a href="http://bootstrapbay.com/blog/bootstrap-editors/" title="7 Bootstrap Editors for Rapid Development of Responsive Websites" target="_self"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/bootstrap-editors1-60x60.png" title="7 Bootstrap Editors for Rapid Development of Responsive Websites" alt="7 Bootstrap Editors for Rapid Development of Responsive Websites" width="60" height="60" class="wpp-thumbnail wpp_cached_thumb wpp_featured"></a><a href="http://bootstrapbay.com/blog/bootstrap-editors/" title="7 Bootstrap Editors for Rapid Development of Responsive Websites" class="wpp-post-title" target="_self">7 Bootstrap Editors for Rapid Development of Responsive Websites</a>  <span class="post-stats"></span> </li>
+<li><a href="http://bootstrapbay.com/blog/google-web-fonts/" title="Top 20 Google Web Fonts and How to Use Them" target="_self"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/google-web-fonts-60x60.png" title="Top 20 Google Web Fonts and How to Use Them" alt="Top 20 Google Web Fonts and How to Use Them" width="60" height="60" class="wpp-thumbnail wpp_cached_thumb wpp_featured"></a><a href="http://bootstrapbay.com/blog/google-web-fonts/" title="Top 20 Google Web Fonts and How to Use Them" class="wpp-post-title" target="_self">Top 20 Google Web Fonts and How to Use Them</a>  <span class="post-stats"></span> </li>
+<li><a href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay.html" title="How to Customize the Default Bootstrap Style, the Right Way" target="_self"><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/customizing-bootstrap-60x60.png" title="How to Customize the Default Bootstrap Style, the Right Way" alt="How to Customize the Default Bootstrap Style, the Right Way" width="60" height="60" class="wpp-thumbnail wpp_cached_thumb wpp_featured"></a><a href="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay.html" title="How to Customize the Default Bootstrap Style, the Right Way" class="wpp-post-title" target="_self">How to Customize the Default Bootstrap Style, the Right Way</a>  <span class="post-stats"></span> </li>
+
+</ul>
+</aside>
+<!-- End Wordpress Popular Posts Plugin v3.0.3 -->
+<aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-14"><a href="http://bootstrapbay.com/blog/category/resources/" title="View all posts filed under Resources">Resources</a> (5)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://bootstrapbay.com/blog/category/site-news/" title="View all posts filed under Site News">Site News</a> (1)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://bootstrapbay.com/blog/category/tutorials/" title="View all posts filed under Tutorials">Tutorials</a> (14)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://bootstrapbay.com/blog/category/web-design/" title="View all posts filed under Web Design">Web Design</a> (10)
+</li>
+		</ul>
+</aside>		</div>
+	</div><!-- #secondary -->
+			</div><!-- close .*-inner (main-content or sidebar, depending if sidebar is used) -->
+		</div><!-- close .row -->
+	</div><!-- close .container -->
+</div><iframe style="display: none;"></iframe><!-- close .main-content -->
+
+<!-- #page -->
+
+<!-- easy-inline-scripts-ver-1.3.9.8.1--><script type="text/javascript">
+		var essb_postcount_data = {
+		'ajax_url': 'http://bootstrapbay.com/blog/wp-admin/admin-ajax.php',
+		'post_id': '462'
+	};
+	jQuery(document).bind('essb_selfpostcount_action', function (e, service, post_id) {		
+		post_id = String(post_id);
+	jQuery.post(essb_postcount_data.ajax_url, {
+	'action': 'essb_self_postcount',
+	'post_id': post_id,
+	'service': service,
+	'nonce': '262349d27a'
+	}, function (data) { if (data) {
+		//alert(data);
+	}},'json');});
+	function essb_self_postcount(service, post_id) {
+
+	jQuery(document).trigger('essb_selfpostcount_action',[service, post_id]);
+	};
+	function essb_window_stat(oUrl, oService, oCountID) { var w = 800 ; var h = 500;  if (oService == "twitter") { w = 500; h= 300; } var left = (screen.width/2)-(w/2); var top = (screen.height/2)-(h/2); if (oService == "twitter") { window.open( oUrl, "essb_share_window", "height=300,width=500,resizable=1,scrollbars=yes,top="+top+",left="+left ); }  else { window.open( oUrl, "essb_share_window", "height=500,width=800,resizable=1,scrollbars=yes,top="+top+",left="+left ); } essb_handle_stats(oService); essb_self_postcount(oService, oCountID);  }; function essb_pinterenst_stat() { essb_handle_stats('pinterest'); var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)};function essb_window(oUrl, oService, oCountID) { var w = 800 ; var h = 500;  if (oService == "twitter") { w = 500; h= 300; } var left = (screen.width/2)-(w/2); var top = (screen.height/2)-(h/2);  if (oService == "twitter") { window.open( oUrl, "essb_share_window", "height=300,width=500,resizable=1,scrollbars=yes,top="+top+",left="+left ); }  else { window.open( oUrl, "essb_share_window", "height=500,width=800,resizable=1,scrollbars=yes,top="+top+",left="+left ); } essb_self_postcount(oService, oCountID); }; function essb_pinterenst() {var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)};var essb_count_data = {
+				'ajax_url': 'http://bootstrapbay.com/blog/wp-admin/admin-ajax.php'
+		};</script><script type="text/javascript">
+
+window.onload = function() {
+
+	"use_strict";
+
+    var arve_iframe_btns = document.getElementsByClassName( "arve-iframe-btn" );
+
+    for ( var i=0; i < arve_iframe_btns.length; i++ ) {
+
+    	arve_iframe_btns[i].onclick = function() {
+
+			var target = document.getElementById( this.getAttribute( "data-target" ) );
+			target.setAttribute( "src", target.getAttribute( "data-src" ) );
+			target.className = "arve-inner";
+			this.className += " arve-hidden";
+    	};
+    };
+};
+</script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/easy-social-share-buttons.js"></script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/skip-link-focus-fix.js"></script>
+<script type="text/javascript" src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/comment-reply.min.js"></script>
+	<footer>
+		<div class="container footerWrap">
+			<div class="row">
+				<div class="col-xs-12 col-sm-3">
+					<h4>BootstrapBay</h4>
+						<ul class="list-unstyled">
+							<li><a href="http://bootstrapbay.com/sell">Sell Your Themes</a></li>
+							<li><a href="http://bootstrapbay.com/affiliate">Affiliates</a></li>
+							<li><a href="http://bootstrapbay.com/about">About Us</a></li>
+							<li><a href="http://bootstrapbay.com/feed">RSS Feed</a></li>
+						</ul>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<h4>Help &amp; Support</h4>
+					<ul class="list-unstyled">
+						<li><a href="http://bootstrapbay.com/faq">FAQ</a></li>
+						<li><a href="http://bootstrapbay.com/submission-guidelines">Submission Guidelines</a></li>
+						<li><a href="http://bootstrapbay.com/payment-rates">Payment Rates</a></li>
+						<li><a href="http://bootstrapbay.com/contact-support">Contact Support</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<h4>Resources</h4>
+					<ul class="list-unstyled">
+						<li><a href="https://stocksnap.io/" target="_blank">Free Stock Photos</a></li>
+						<li><a href="http://bootstrapbay.com/blog">Blog</a></li>
+						<li><a href="http://bootstrapbay.com/blog/bootstrap-resources/">Resource List</a></li>
+						<li><a href="http://bootstrapbay.com/blog/category/tutorials/">Tutorials</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<h4>Social</h4>
+					<ul class="list-unstyled">
+						<li><a href="https://www.facebook.com/bootstrapbay" target="_blank">Facebook</a></li>
+						<li><a href="https://twitter.com/bootstrapbay" target="_blank">Twitter</a></li>
+						<li><a href="http://www.youtube.com/user/bootstrapbayofficial" target="_blank">YouTube</a></li>
+						<li><a href="https://plus.google.com/+BootstrapbayThemes/posts" target="_blank">Google+</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="subFooter">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="pull-left">
+						© 2015 <a href="http://noscomedia.com/" target="_blank">Nosco Media Inc.</a> / 
+						<a href="http://bootstrapbay.com/licenses">Licenses</a> / 
+						<a href="http://bootstrapbay.com/terms">Terms &amp; Conditions</a> / 
+						<a href="http://bootstrapbay.com/privacy">Privacy Policy</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-48244800-1', 'bootstrapbay.com');
+ga('send', 'pageview');
+
+</script>
+
+<script>(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+  _fbq.push(['addPixelId', '745892422098082']);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', 'PixelInitialized', {}]);
+</script>
+<noscript>&lt;img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=745892422098082&amp;amp;ev=NoScript" /&gt;</noscript>
+
+<a href="javascript:void(0);" title="SumoMe" style="position: fixed; z-index: 10000000000; padding: 0px; width: 44px; height: 40px; text-indent: -10000px; display: none !important; background-image: url(http://d2hpw6pw4uian4.cloudfront.net/static/e24807e4ba673004533dad08cb7b298bdf5f2e02/client/images/control-apps.png); background-color: rgb(15, 82, 186); background-position-x: 4px; background-repeat: no-repeat;"></a><img src="./How to Customize the Default Bootstrap Style, the Right Way - BootstrapBay_files/saved_resource(1)" alt="" style="display: none;"></body></html>

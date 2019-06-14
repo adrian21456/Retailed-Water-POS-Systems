@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <title></title>
+  
+      <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+	
+	
+	<script>
+$(function(){
+
+ $('#sel1').change(function(){
+	v=$(this).val();
+	localStorage.setItem('searchtype',v);
+	$('#ref').focus();
+	
+});
+if (localStorage.getItem('searchtype')){
+	
+	v=localStorage.getItem('searchtype');
+	$('#sel1').val(v);
+//	alert(v);
+	
+}else{
+	$('#sel1').val('all');
+	
+	
+}
+
+
+
+
+
+
+ cat=$.trim($('#sel1').val());
+ // $('#a').html(cat);
+
+$.post('mobilecontroller.php',{lType:'CuingOrdernotrealtime',cat:cat,											   
+														},	
+														
+														function(data){	
+															//alert(data);
+															//$('#a').html(data);
+															if ($.trim(data)!='false' ){ 
+															
+															    var obj = $.parseJSON(data);
+																   var x = '';
+																  // $.each(obj, function() {	
+                                                                   var y='';
+																   
+																  
+																  // });
+																   
+																   
+																   $.each(obj, function() {	 
+																   
+																	/*
+																	//x += '<li ><a   class="btn btn-default btncategory btn-lg" href="#"   xmlvalue="'+this['category']+'">'+this['category']+'</a></li>';
+																   x+='<div class="panel-group">';
+																   x+='<div class="panel panel-default">';
+																   x+='<div class="panel-heading">';
+																   x+='<h4 class="panel-title">';
+																   x+='<a data-toggle="collapse" href="#'+this['reference']+'">'+this['reference']+' - '+this['qty']+' - '+this['name']+'</a>';
+																   x+='</h4>';
+																   x+='</div>';
+																   x+='<div id="'+this['reference']+'" class="panel-collapse collapse">elow';
+																   
+																  
+																   
+																   
+																   x+='</div>';
+																   */
+																  // y+='<tr id="'+this['reference']+this['itemid']+'"><td>'+this['reference']+'</td><td>'+this['qty']+'</td><td>'+this['name']+'</td><td><a href="#" class="btn btn-danger btndone" id="'+this['reference']+this['itemid']+'">Done</a></td></tr>';
+																    if(this['done']==1){
+																   y+='<tr id="'+this['reference']+this['itemid']+'"><td>'+this['reference']+' -> <span style="color:green;">Done</span>'+'</td><td>'+this['qty']+'</td><td>'+this['name']+'</td><td><a href="#"  class="btn btn-success btnrecallindiv" id="'+this['reference']+this['itemid']+'">Recall</a></td></tr>';
+																   }else{
+																   y+='<tr id="'+this['reference']+this['itemid']+'"><td>'+this['reference']+'</td><td>'+this['qty']+'</td><td>'+this['name']+'</td><td><a href="#" class="btn btn-danger btndone" id="'+this['reference']+this['itemid']+'">Done</a></td></tr>';
+																   }
+																   // x += '<option class="btncategory"  xmlvalue="'+this['category']+'">'+this['category']+'</option>';
+																   
+																   });
+                                                                    
+															   
+                                                                   $('#torder').html(y).css('font-size','20px').css('color','orange');
+																
+															}else{
+															$('#torder').html('No Record Found..').css('font-size','50px').css('color','red');
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});													
+
+ 
+
+
+ 
+$('html').on('click','.btndone',function(){
+  ref=$.trim($(this).attr('id'));
+ // alert('"#'+ref+'"');
+ //x='#'+x;
+  $('#'+ref).remove();
+  //cat=$.trim($('#sel1').val());
+  // ref=$('#ref').val();
+ $.post('mobilecontroller.php',{lType:'DoneOrderItem',ref:ref,												   
+														},	
+														
+														function(data){	
+															//alert(data);
+															//$('#ref').val(data);
+															if ($.trim(data)!='false' ){ 
+															
+															    alert('Done');
+																window.open('s.html','_self');
+															}else{
+															alert('Database Access Failed.');
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});	
+  
+})
+
+$('html').on('click','.btnrecallindiv',function(){
+  ref=$.trim($(this).attr('id'));
+ // alert('"#'+ref+'"');
+ //x='#'+x;
+ // $('#'+ref).remove();
+  //cat=$.trim($('#sel1').val());
+  // ref=$('#ref').val();
+ $.post('mobilecontroller.php',{lType:'RecallOrderItem',ref:ref,												   
+														},	
+														
+														function(data){	
+															//alert(data);
+															//$('#ref').val(data);
+															if ($.trim(data)!='false' ){ 
+															
+															    alert('Item Recalled');
+																window.open('s.html','_self');
+															}else{
+															alert('Database Access Failed.');
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});	
+  
+})
+ 
+ $('.btnorderdone').click(function(){
+ ref=$('#ref').val();
+  cat=$.trim($('#sel1').val());
+ $.post('mobilecontroller.php',{lType:'DoneOrder',ref:ref,cat:cat,												   
+														},	
+														
+														function(data){	
+															//alert(data);
+															if ($.trim(data)!='false' ){ 
+															
+															    
+																alert('Done');
+																window.open('s.html','_self');
+																
+															}else{
+															alert('Database Access Failed.');
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});	
+ });
+ 
+ 
+ $('.btnrecall').click(function(){
+ ref=$('#ref').val();
+  cat=$.trim($('#sel1').val());
+ $.post('mobilecontroller.php',{lType:'RecallOrder',ref:ref,cat:cat,												   
+														},	
+														
+														function(data){	
+														//	alert(data);
+														//$('#ref').val(data);
+															//return;
+															if ($.trim(data)!='false' ){ 
+															
+															    alert('Done');
+																window.open('s.html','_self');
+															}else{
+															alert('Database Access Failed.');
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});	
+ });
+ 
+
+
+ $('.btnsearch').click(function(){
+ ref=$.trim($('#ref').val());
+ cat=$.trim($('#sel1').val())
+ 
+ //alert(cat);
+ ///if (cat=='all'){
+ //   $('#ref').val('');
+// }
+ 
+ $.post('mobilecontroller.php',{lType:'SearchOrder',ref:ref,cat:cat,												   
+														},	
+														
+														function(data){	
+															//alert(data);
+															
+															if ($.trim(data)!='false' ){ 
+															
+															    var obj = $.parseJSON(data);
+																   var x = '';
+																  // $.each(obj, function() {	
+                                                                   var y='';
+																   
+																  
+																  // });
+																   
+																   
+																   $.each(obj, function() {	 
+																   
+																	/*
+																	//x += '<li ><a   class="btn btn-default btncategory btn-lg" href="#"   xmlvalue="'+this['category']+'">'+this['category']+'</a></li>';
+																   x+='<div class="panel-group">';
+																   x+='<div class="panel panel-default">';
+																   x+='<div class="panel-heading">';
+																   x+='<h4 class="panel-title">';
+																   x+='<a data-toggle="collapse" href="#'+this['reference']+'">'+this['reference']+' - '+this['qty']+' - '+this['name']+'</a>';
+																   x+='</h4>';
+																   x+='</div>';
+																   x+='<div id="'+this['reference']+'" class="panel-collapse collapse">elow';
+																   
+																  
+																   
+																   
+																   x+='</div>';
+																   */
+																
+																   if(this['done']==1){
+																   y+='<tr id="'+this['reference']+this['itemid']+'"><td>'+this['reference']+' -> <span style="color:green;">Done</span>'+'</td><td>'+this['qty']+'</td><td>'+this['name']+'</td><td><a href="#"  class="btn btn-success btnrecallindiv" id="'+this['reference']+this['itemid']+'">Recall</a></td></tr>';
+																   }else{
+																   y+='<tr id="'+this['reference']+this['itemid']+'"><td>'+this['reference']+'</td><td>'+this['qty']+'</td><td>'+this['name']+'</td><td><a href="#" class="btn btn-danger btndone" id="'+this['reference']+this['itemid']+'">Done</a></td></tr>';
+																   }
+																   // x += '<option class="btncategory"  xmlvalue="'+this['category']+'">'+this['category']+'</option>';
+																   
+																   });
+                                                                    
+															   
+                                                                  $('#torder').html(y).css('font-size','20px').css('color','orange');
+																
+															}else{
+															$('#torder').html('No Record Found..').css('font-size','50px').css('color','red');
+															  // window.open('sales.php','_self');
+															  // alert('Record not found.');
+															}
+														});				
+ 
+ 
+ });
+ 
+});
+
+</script>
+	
+	
+	
+	
+	
+</head>
+<body>
+
+<div class=container-fluid>
+<h1 id='a'></h1>
+<div class="panel-group">
+<div class="panel panel-default">
+  <div class="panel-heading">
+     <h4 class="panel-title">
+	 <a data-toggle="collapse" href="#c1">Action Tag</a>
+	 </h4>
+  </div>
+  
+  <div id="c1" class="panel-collapse collapse in">
+    <table class="table-condensed" >
+  <tr>
+  <td>
+
+  <input type="text" id="ref" class='form-class input-lg' placeholder="Table No./Reference"/>
+  </td>
+  <td>
+  
+    <select class="form-control input-lg" id="sel1">
+	 <option value="all">All</option>
+    <option value="main">Main Kitchen</option>
+    <option value="grilled">Grilled Kitchen</option>
+  </select>
+  </td>
+   <td>
+  <a href="#" class="btn btn-info btn-lg btnsearch">Search</a>
+   </td>
+   <td>   
+  <td>
+  <!--
+  <a href="#" class="btn btn-info btn-lg btnrecall">Recall</a>
+  -->
+   </td>
+   <td> 
+<!--   
+  <a href="#" class="btn btn-danger btn-lg btnorderdone">Order Done</a>
+  -->
+  </td>
+  
+     <td>   
+  <a href="index.html" class="btn btn-primary btn-lg">Ordering</a>
+  </td>
+  </tr>
+  </table>
+  </div>
+
+</div>
+</div>
+
+
+<table class="table table-striped">
+<thead>
+<th>
+Table No.:
+</th>
+<th>
+Quantity
+</th>
+<th>
+Item /description
+</th>
+<th>
+Action
+</th>
+</thead>
+
+<tbody id='torder'>
+</tbody>
+</table>
+</br/>
+
+<div id="orderlist">
+</div>
+</div>
+</body>
+</html>

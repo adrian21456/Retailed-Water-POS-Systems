@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/main.css">
+
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	
+		<script src="js/jchart.js"></script>
+		<script>
+		$(document).ready(function() {
+		
+		function comma(x) {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+		
+			//$("#population_chart").jChart({x_label:"Population"});
+			//$("#colors_chart").jChart();
+			
+			var l1="No Data";
+			var a1=0;
+			
+			var l2="No Data";
+			var a2=0;
+			
+			var l3="No Data";
+			var a3=0;
+			
+		    var l4="No Data";
+			var a4=0;
+			
+			var l5="No Data";
+			var a5=0;
+			
+			var l6="No Data";
+			var a6=0;
+			
+			var l7="No Data";
+			var a7=0;
+			
+                                                 $.post('controller.php',{lType:'Sales', 													   
+														},	
+														function(data){	
+															//alert(data);
+
+															// $('#a').html(data);
+															
+															var n=0;
+															
+															if ($.trim(data)!='false' ){ 
+                                                                
+																
+																
+															var obj = $.parseJSON(data);
+                                                               
+
+																$.each(obj, function() {
+		                                                          n+=1;
+																 if (n==1){
+																   l1=this['sdate'];
+																   a1=this['amount'];
+																   
+											
+																}
+																
+														        if (n==2){
+																   l2=this['sdate'];
+																   a2=this['amount'];
+																}
+																
+																 if (n==3){
+																   l3=this['sdate'];
+																   a3=this['amount'];
+																}
+																
+																 if (n==4){
+																   l4=this['sdate'];
+																   a4=this['amount'];
+																}
+																
+																 if (n==5){
+																   l5=this['sdate'];
+																   a5=this['amount'];
+																}
+																
+																 if (n==6){
+																   l6=this['sdate'];
+																   a6=this['amount'];
+																}
+																
+																 if (n==7){
+																   l7=this['sdate'];
+																   a7=this['amount'];
+																}
+																  
+															    });	 
+																
+																
+
+																$("#population_chart").jChart({
+																	name: "<h1>Comparative (7) Days Sales Performance Index </h1><hr/>",
+																	headers: [l1+"  ( Php "+comma(a1)+" )",l2+"  ( Php "+comma(a2)+" )",l3+"  ( Php "+comma(a3)+" )",l4+"  ( Php "+comma(a4)+" )",l5+"  ( Php "+comma(a5)+" )",l6+"  ( Php "+comma(a6)+" )",l7+"  ( Php "+comma(a7)+" )"],
+																	values: [a1,a2,a3,a4,a5,a6,a7],
+																	//footers: [parseInt(a1),parseInt(a2),parseInt(a3),parseInt(a4),parseInt(a5),parseInt(a6),parseInt(a7)],
+																	
+																	footers: [0,0,0,25000,0,0,50000],
+																	//colors: ["#1000ff","#006eff","#00b6ff","#00fff6","#00ff90"]
+																	colors: ["red","orange","yellow","green","blue","indigo","violet"]
+																});
+																
+															}
+														
+															
+														
+														});
+									
+														
+														
+														
+
+
+
+
+  
+
+
+			
+			
+		});
+		</script>
+		
+		<style>
+		.jumbotron {
+			padding-top: 20px;
+			padding-bottom: 10px;
+			color: white;
+			background-color: #4570a5;
+		}
+		.jumbotron>h1 {
+			font-size: 75pt;
+			font-family: "Times New Roman", Times, serif;
+			margin: 0;
+		}
+		.jumbotron>p {
+			margin: 0;
+		}
+	</style>
+	</head>
+	
+	<body>
+	<div id="a">
+	
+	</div>
+<div class="container">
+<div id="population_chart" data-sort="false" data-width="800" class="jChart chart-lg" name="North American Regional Population Loss 2014">
+	
+</div>
+</div>
+
+</body>
+</html>
+		

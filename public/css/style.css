@@ -1,0 +1,220 @@
+﻿
+/* =============================================================
+   GENERAL STYLES
+ ============================================================ */
+.modal-open[style] {
+   padding-right: 0px !important;
+} 
+.cRed{
+    color: red;
+} 
+.mtop-10{
+    margin-top: 10px
+}
+.mbot-10{
+    margin-bottom: 10px
+}
+.hover:hover{
+    cursor: pointer!important;
+}
+.input-form{
+    width: 100%!important;
+    border: solid 1px #ccc;
+    padding: 1.5%!important;
+    display: block;
+    line-height: 1.42857143;
+    height: 38px;
+}
+.border{
+    border: solid 1px #ddd;
+}
+.shadow{
+	margin: 0px auto;
+	border: 1px solid white;
+	box-shadow: 1px 3px 20px #333;
+	
+}
+ 
+#transactions_left {
+	width: auto;
+    height: 250px;
+	
+	/* overflow: scroll; */
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#transactions_left_buttom {
+	width: auto;
+    height: 400px;
+	
+	/* overflow: scroll; */
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+#transactions_left-1{
+	width: auto;
+    height: 400px;
+	/* overflow: scroll; */
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#transactions_right {
+	width: 651px;
+    height: 510px;
+    overflow: hidden;
+	/*background-color: green; */
+    top: 65px;
+    padding-top: 0px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 30px;
+	position: relative;
+    top: -30px;
+    left: 14px;
+
+}
+
+#transactions_right_top {
+	width: auto;
+    height: 60px;
+	position: relative;
+    top: -7px;
+    left: 14px;
+	/*background-color: green; */
+}
+
+#logo_index {
+	width: auto;
+    height: 60px;
+	position: relative;
+    top: -180px;
+
+	/*background-color: green; */
+}
+#sales_logo {
+	width: auto;
+    height: 60px;
+	position: relative;
+    top: -40px;
+    left: -50px;
+	z-index: 5;
+	/*background-color: green; */
+}
+
+#sales_footer {
+
+    height: 5px;
+	position: relative;
+    top: -70px;
+
+	/*background-color: green; */
+}
+#productlistcount {
+	width: auto;
+    height: 60px;
+	position: absolute;
+    top: 100px;
+    left: 14px;
+	/*background-color: green; */
+
+	
+	
+}
+#transactions_right_bottom {
+	width: auto;
+    height: 55px;
+    overflow: hidden;
+
+	position: relative;
+    top: -70px;
+    left: 14px;
+}
+
+.fixed-size-square {
+	 float: left;
+	 display: table;
+	 width: 110px;
+	 height: 90px;
+	 background: #0f8cba;
+	 margin-top: 10px;
+	 margin-bottom: 10px;
+	 margin-right: 10px;
+	 -webkit-border-radius: 4px;
+	-moz-border-radius: 100px;
+		color: white;
+	 
+}
+
+.fixed-size-square span {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	
+	font-size: 12px;
+
+}
+
+
+.modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-warning {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #f0ad4e;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-info {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5bc0de;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-primary {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #428bca;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
